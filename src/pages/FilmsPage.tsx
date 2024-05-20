@@ -16,6 +16,8 @@ const FilmsPage = () => {
   const [searchInput, setSearchInput] = useState("");
   const [searchParams, setSearchParams] = useSearchParams("");
 
+  const inputSearchRef = useRef<HTMLInputElement>(null);
+
   const navigate = useNavigate();
 
   const searchParamsQuery = searchParams.get("query");
@@ -83,6 +85,10 @@ const FilmsPage = () => {
   };
 
   useEffect(() => {
+    inputSearchRef.current?.focus();
+  }, []);
+
+  useEffect(() => {
     if (searchParamsPage) {
       searchFilms(searchParamsPage);
     } else {
@@ -103,6 +109,7 @@ const FilmsPage = () => {
               placeholder="Enter your search"
               type="text"
               value={searchInput}
+              ref={inputSearchRef}
             />
           </Form.Group>
         </Form>
