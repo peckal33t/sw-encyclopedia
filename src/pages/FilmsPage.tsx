@@ -23,14 +23,14 @@ const FilmsPage = () => {
   const searchParamsQuery = searchParams.get("query");
   const searchParamsPage = searchParams.get("page");
 
-  const getFilms = async (resource: string) => {
+  const getFilms = async (resource: string, page = 1) => {
     setFilms(null);
     setIsLoading(true);
     setError(null);
     setSearchInput("");
 
     try {
-      const data = await API.getResources<SW_FilmsResponse>(resource);
+      const data = await API.getResources<SW_FilmsResponse>(resource, page);
       setFilms(data);
       console.log(data);
     } catch (err) {
@@ -44,7 +44,7 @@ const FilmsPage = () => {
     setIsLoading(false);
   };
 
-  const searchFilms = async (searchQuery: string) => {
+  const searchFilms = async (searchQuery: string, page = 1) => {
     setFilms(null);
     setIsLoading(true);
     setError(null);
@@ -53,7 +53,7 @@ const FilmsPage = () => {
       const data = await API.searchResource<SW_FilmsResponse>(
         "films",
         searchQuery,
-        Number(searchParamsPage)
+        page
       );
       setFilms(data);
     } catch (err) {
@@ -81,7 +81,21 @@ const FilmsPage = () => {
       page: "1",
     });
 
-    searchFilms(searchInput);
+    searchFilms(trimmedSearchInput, 1);
+  };
+
+  const handlePageChange = (newPage: number) => {
+    if (searchParamsQuery) {
+      setSearchParams({
+        query: searchParamsQuery,
+        page: newPage.toString(),
+      });
+    } else {
+      setSearchParams({
+        page: newPage.toString(),
+      });
+      getFilms("films", newPage);
+    }
   };
 
   useEffect(() => {
@@ -89,9 +103,10 @@ const FilmsPage = () => {
   }, []);
 
   useEffect(() => {
+    const page = searchParamsPage ? parseInt(searchParamsPage) : 1;
     if (searchParamsQuery) {
       setSearchInput(searchParamsQuery);
-      searchFilms(searchParamsQuery);
+      searchFilms(searchParamsQuery, page);
     } else {
       getFilms("films");
     }
@@ -153,6 +168,21 @@ const FilmsPage = () => {
               </Col>
             ))}
           </Row>
+          <div className="d-flex justify-content-between align-items-center">
+            <Button
+              onClick={() => handlePageChange(films.current_page - 1)}
+              disabled={films.current_page === 1}
+            >
+              Previous page
+            </Button>
+            <span>{`Page ${films.current_page} of ${films.last_page}`}</span>
+            <Button
+              onClick={() => handlePageChange(films.current_page + 1)}
+              disabled={films.current_page === films.last_page}
+            >
+              Next page
+            </Button>
+          </div>
         </>
       )}
     </>
