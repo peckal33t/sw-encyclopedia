@@ -1,4 +1,4 @@
-import { useState, useEffect } from "react";
+import { useState, useEffect, useRef } from "react";
 import * as API from "../services/API";
 import { SW_FilmsResponse } from "../types/Films.types";
 import { useNavigate, useSearchParams } from "react-router-dom";
@@ -95,17 +95,17 @@ const FilmsPage = () => {
       {isLoading && <p>Loading...</p>}
       {error && <Alert variant="warning">{error}</Alert>}
       <div>
-        <Form className="mb-4" onSubmit={handleSubmit} />
-        <Form.Group className="mb-3" controlId="searchQuery">
-          <Form.Label>Search for film</Form.Label>
-          <Form.Control
-            onChange={(e) => setSearchInput(e.target.value)}
-            placeholder="Enter your search"
-            type="text"
-            // ref={searchParamsQuery}
-            value={searchInput}
-          />
-        </Form.Group>
+        <Form className="mb-4" onSubmit={handleSubmit}>
+          <Form.Group className="mb-3" controlId="searchQuery">
+            <Form.Label>Search for film</Form.Label>
+            <Form.Control
+              onChange={(e) => setSearchInput(e.target.value)}
+              placeholder="Enter your search"
+              type="text"
+              value={searchInput}
+            />
+          </Form.Group>
+        </Form>
       </div>
       {!isLoading && !error && films && (
         <>
@@ -114,19 +114,21 @@ const FilmsPage = () => {
               {films.total} search result for "{searchParamsQuery}"
             </p>
           ) : (
-            <p>{films.total} results</p>
+            <p>{films.total} results showing for Films</p>
           )}
           <Row>
             {films.data.map((film) => (
               <Col key={film.id} xs={12} md={6} lg={4} className="mb-3">
-                <Card>
+                <Card className="p-3">
                   <Card.Title>{film.title}</Card.Title>
+                  <Card.Text>Director: {film.director}</Card.Text>
                   <Card.Text>Release date: {film.release_date}</Card.Text>
                   <Button
                     onClick={() => {
                       navigate(`/films/${film.id}`);
                     }}
                     variant="primary"
+                    size="sm"
                   >
                     Read more
                   </Button>
