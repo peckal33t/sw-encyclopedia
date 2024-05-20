@@ -14,8 +14,8 @@ export const getData = async <T>(endpoint: string) => {
   return res.data;
 };
 
-export const getResources = async <T>(resource: string) => {
-  return getData<T>(`/${resource}`);
+export const getResources = async <T>(resource: string, page: number) => {
+  return getData<T>(`/${resource}?page=${page}`);
 };
 
 export const getResourceById = async <T>(resource: string, id: number) => {

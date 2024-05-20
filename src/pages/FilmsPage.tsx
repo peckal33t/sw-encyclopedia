@@ -112,7 +112,7 @@ const FilmsPage = () => {
               value={searchInput}
               ref={inputSearchRef}
             />
-            <div className="d-flex justify-content-end">
+            <div className="d-flex justify-content-end p-2">
               <Button
                 onClick={handleSubmit}
                 onSubmit={handleSubmit}
