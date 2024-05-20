@@ -77,7 +77,7 @@ const FilmsPage = () => {
     }
 
     setSearchParams({
-      search: searchInput,
+      query: searchInput,
       page: "1",
     });
 
@@ -89,8 +89,9 @@ const FilmsPage = () => {
   }, []);
 
   useEffect(() => {
-    if (searchParamsPage) {
-      searchFilms(searchParamsPage);
+    if (searchParamsQuery) {
+      setSearchInput(searchParamsQuery);
+      searchFilms(searchParamsQuery);
     } else {
       getFilms("films");
     }
