@@ -112,6 +112,15 @@ const FilmsPage = () => {
               value={searchInput}
               ref={inputSearchRef}
             />
+            <div className="d-flex justify-content-end">
+              <Button
+                onClick={handleSubmit}
+                onSubmit={handleSubmit}
+                disabled={searchInput.trim().length < 1}
+              >
+                Search
+              </Button>
+            </div>
           </Form.Group>
         </Form>
       </div>
