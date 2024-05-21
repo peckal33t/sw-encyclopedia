@@ -88,8 +88,12 @@ const PeoplePage = () => {
   }, []);
 
   useEffect(() => {
-    getPeople("people");
-  }, []);
+    if (searchParamsQuery) {
+      setSearchInput(searchParamsQuery);
+    } else {
+      getPeople("people");
+    }
+  }, [searchParamsQuery, searchParamsPage]);
 
   return (
     <>
@@ -100,6 +104,7 @@ const PeoplePage = () => {
           <Form.Group className="mb-3" controlId="searchQuery">
             <Form.Label>Search for person</Form.Label>
             <Form.Control
+              onChange={(e) => setSearchInput(e.target.value)}
               placeholder="Enter your search"
               type="text"
               value={searchInput}
