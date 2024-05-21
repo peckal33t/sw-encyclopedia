@@ -43,12 +43,53 @@ const PeoplePage = () => {
     setIsLoading(false);
   };
 
+  const searchPeople = async (searchQuery: string, page = 1) => {
+    setPeople(null);
+    setIsLoading(true);
+    setError(null);
+
+    try {
+      const data = await API.searchResource<SW_PeopleResponse>(
+        "people",
+        searchQuery,
+        page
+      );
+      setPeople(data);
+    } catch (err) {
+      if (err instanceof Error) {
+        setError(err.message);
+      } else {
+        setError("Stop with the errors!");
+      }
+    }
+
+    setIsLoading(false);
+  };
+
   useEffect(() => {
     getPeople("people");
   }, []);
 
   return (
     <>
+      {isLoading && <p>Loading...</p>}
+      {error && <Alert variant="warning">{error}</Alert>}
+      <div>
+        <Form className="mb-4">
+          <Form.Group className="mb-3" controlId="searchQuery">
+            <Form.Label>Search for film</Form.Label>
+            <Form.Control
+              placeholder="Enter your search"
+              type="text"
+              value={searchInput}
+              ref={inputSearchRef}
+            />
+            <div className="d-flex justify-content-end p-2">
+              <Button disabled>Search</Button>
+            </div>
+          </Form.Group>
+        </Form>
+      </div>
       {isLoading && <p>Loading...</p>}
       {error && <Alert variant="warning">{error}</Alert>}
       {!isLoading && !error && people && (
