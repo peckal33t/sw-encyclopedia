@@ -66,6 +66,27 @@ const PeoplePage = () => {
     setIsLoading(false);
   };
 
+  const handleSubmit = (e: React.FormEvent) => {
+    e.preventDefault();
+
+    const trimmedSearchInput = searchInput.trim();
+
+    if (!trimmedSearchInput.length) {
+      return;
+    }
+
+    setSearchParams({
+      query: searchInput,
+      page: "1",
+    });
+
+    searchPeople(trimmedSearchInput, 1);
+  };
+
+  useEffect(() => {
+    inputSearchRef.current?.focus();
+  }, []);
+
   useEffect(() => {
     getPeople("people");
   }, []);
@@ -75,9 +96,9 @@ const PeoplePage = () => {
       {isLoading && <p>Loading...</p>}
       {error && <Alert variant="warning">{error}</Alert>}
       <div>
-        <Form className="mb-4">
+        <Form className="mb-4" onSubmit={handleSubmit}>
           <Form.Group className="mb-3" controlId="searchQuery">
-            <Form.Label>Search for film</Form.Label>
+            <Form.Label>Search for person</Form.Label>
             <Form.Control
               placeholder="Enter your search"
               type="text"
@@ -85,7 +106,13 @@ const PeoplePage = () => {
               ref={inputSearchRef}
             />
             <div className="d-flex justify-content-end p-2">
-              <Button disabled>Search</Button>
+              <Button
+                onClick={handleSubmit}
+                onSubmit={handleSubmit}
+                disabled={searchInput.trim().length < 1}
+              >
+                Search
+              </Button>
             </div>
           </Form.Group>
         </Form>
@@ -99,7 +126,7 @@ const PeoplePage = () => {
               <Card className="p-3">
                 <Card.Title>{person.name}</Card.Title>
                 <Card.Text>Birth year: {person.birth_year}</Card.Text>
-                <Card.Text>In films: {person.films_count}</Card.Text>
+                <Card.Text>Playing in: {person.films_count} films</Card.Text>
                 <Button
                   onClick={() => {
                     navigate(`/people/${person.id}`);
