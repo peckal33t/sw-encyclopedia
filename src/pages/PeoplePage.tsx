@@ -155,15 +155,16 @@ const PeoplePage = () => {
                   <Card.Title>{person.name}</Card.Title>
                   <Card.Text>Director: {person.birth_year}</Card.Text>
                   <Card.Text>Playing in: {person.films_count} films</Card.Text>
-                  <Button
-                    onClick={() => {
-                      navigate(`/people/${person.id}`);
-                    }}
-                    variant="primary"
-                    size="sm"
-                  >
-                    Read more
-                  </Button>
+                  <div className="d-flex justify-content-start">
+                    <Button
+                      onClick={() => {
+                        navigate(`/people/${person.id}`);
+                      }}
+                      variant="primary"
+                    >
+                      Read more
+                    </Button>
+                  </div>
                 </Card>
               </Col>
             ))}

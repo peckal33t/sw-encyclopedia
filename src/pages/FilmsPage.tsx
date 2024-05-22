@@ -157,15 +157,16 @@ const FilmsPage = () => {
                   <Card.Title>{film.title}</Card.Title>
                   <Card.Text>Director: {film.director}</Card.Text>
                   <Card.Text>Release date: {film.release_date}</Card.Text>
-                  <Button
-                    onClick={() => {
-                      navigate(`/films/${film.id}`);
-                    }}
-                    variant="primary"
-                    size="sm"
-                  >
-                    Read more
-                  </Button>
+                  <div className="d-flex justify-content-start">
+                    <Button
+                      onClick={() => {
+                        navigate(`/films/${film.id}`);
+                      }}
+                      variant="primary"
+                    >
+                      Read more
+                    </Button>
+                  </div>
                 </Card>
               </Col>
             ))}

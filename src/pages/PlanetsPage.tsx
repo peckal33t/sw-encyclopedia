@@ -151,15 +151,16 @@ const PlanetsPage = () => {
                 <Card className="p-3">
                   <Card.Title>{planet.name}</Card.Title>
                   <Card.Text>Appears in: {planet.films_count} films</Card.Text>
-                  <Button
-                    onClick={() => {
-                      navigate(`/planets/${planet.id}`);
-                    }}
-                    variant="primary"
-                    size="sm"
-                  >
-                    Read more
-                  </Button>
+                  <div className="d-flex justify-content-start">
+                    <Button
+                      onClick={() => {
+                        navigate(`/planets/${planet.id}`);
+                      }}
+                      variant="primary"
+                    >
+                      Read more
+                    </Button>
+                  </div>
                 </Card>
               </Col>
             ))}
