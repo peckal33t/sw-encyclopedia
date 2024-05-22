@@ -118,7 +118,7 @@ const PeoplePage = () => {
       <div>
         <Form className="mb-4" onSubmit={handleSubmit}>
           <Form.Group className="mb-3" controlId="searchQuery">
-            <Form.Label>Search for person</Form.Label>
+            <Form.Label>Search for film</Form.Label>
             <Form.Control
               onChange={(e) => setSearchInput(e.target.value)}
               placeholder="Enter your search"
@@ -138,29 +138,51 @@ const PeoplePage = () => {
           </Form.Group>
         </Form>
       </div>
-      {isLoading && <p>Loading...</p>}
-      {error && <Alert variant="warning">{error}</Alert>}
       {!isLoading && !error && people && (
-        <Row>
-          {people.data.map((person) => (
-            <Col key={person.id} xs={12} md={6} lg={4} className="mb-3">
-              <Card className="p-3">
-                <Card.Title>{person.name}</Card.Title>
-                <Card.Text>Birth year: {person.birth_year}</Card.Text>
-                <Card.Text>Playing in: {person.films_count} films</Card.Text>
-                <Button
-                  onClick={() => {
-                    navigate(`/people/${person.id}`);
-                  }}
-                  variant="primary"
-                  size="sm"
-                >
-                  Read more
-                </Button>
-              </Card>
-            </Col>
-          ))}
-        </Row>
+        <>
+          {people.data.length > 0 && searchParamsQuery ? (
+            <p>
+              {people.total} search result for "{searchParamsQuery}"
+            </p>
+          ) : (
+            <p>{people.total} results showing for Persons</p>
+          )}
+          <Row>
+            {people.data.map((person) => (
+              <Col key={person.id} xs={12} md={6} lg={4} className="mb-3">
+                <Card className="p-3">
+                  <Card.Title>{person.name}</Card.Title>
+                  <Card.Text>Director: {person.birth_year}</Card.Text>
+                  <Card.Text>Playing in: {person.films_count} films</Card.Text>
+                  <Button
+                    onClick={() => {
+                      navigate(`/people/${person.id}`);
+                    }}
+                    variant="primary"
+                    size="sm"
+                  >
+                    Read more
+                  </Button>
+                </Card>
+              </Col>
+            ))}
+          </Row>
+          <div className="d-flex justify-content-between align-items-center">
+            {/* <Button
+              onClick={() => handlePageChange(people.current_page - 1)}
+              disabled={people.current_page === 1}
+            >
+              Previous page
+            </Button>
+            <span>{`Page ${people.current_page} of ${people.last_page}`}</span>
+            <Button
+              onClick={() => handlePageChange(people.current_page + 1)}
+              disabled={people.current_page === people.last_page}
+            >
+              Next page
+            </Button> */}
+          </div>
+        </>
       )}
     </>
   );
