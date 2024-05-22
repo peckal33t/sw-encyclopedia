@@ -23,14 +23,14 @@ const PeoplePage = () => {
   const searchParamsQuery = searchParams.get("query");
   const searchParamsPage = searchParams.get("page");
 
-  const getPeople = async (resource: string, page = 1) => {
+  const getPeople = async (page = 1) => {
     setPeople(null);
     setIsLoading(true);
     setError(null);
     setSearchInput("");
 
     try {
-      const data = await API.getResources<SW_PeopleResponse>(resource, page);
+      const data = await API.getResources<SW_PeopleResponse>("people", page);
       setPeople(data);
       console.log(data);
     } catch (err) {
@@ -76,7 +76,7 @@ const PeoplePage = () => {
     }
 
     setSearchParams({
-      query: searchInput,
+      query: trimmedSearchInput,
       page: "1",
     });
 
@@ -93,7 +93,7 @@ const PeoplePage = () => {
       setSearchParams({
         page: newPage.toString(),
       });
-      getPeople("people,", newPage);
+      getPeople(newPage);
     }
   };
 
@@ -107,7 +107,7 @@ const PeoplePage = () => {
       setSearchInput(searchParamsQuery);
       searchPeople(searchParamsQuery, page);
     } else {
-      getPeople("people");
+      getPeople(page);
     }
   }, [searchParamsQuery, searchParamsPage]);
 
@@ -168,7 +168,7 @@ const PeoplePage = () => {
             ))}
           </Row>
           <div className="d-flex justify-content-between align-items-center">
-            {/* <Button
+            <Button
               onClick={() => handlePageChange(people.current_page - 1)}
               disabled={people.current_page === 1}
             >
@@ -180,7 +180,7 @@ const PeoplePage = () => {
               disabled={people.current_page === people.last_page}
             >
               Next page
-            </Button> */}
+            </Button>
           </div>
         </>
       )}
