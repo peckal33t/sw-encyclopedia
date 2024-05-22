@@ -8,6 +8,7 @@ import Row from "react-bootstrap/Row";
 import Col from "react-bootstrap/Col";
 import Card from "react-bootstrap/Card";
 import Button from "react-bootstrap/Button";
+import Pagination from "../components/Pagination";
 
 const FilmsPage = () => {
   const [films, setFilms] = useState<SW_FilmsResponse | null>(null);
@@ -23,14 +24,14 @@ const FilmsPage = () => {
   const searchParamsQuery = searchParams.get("query");
   const searchParamsPage = searchParams.get("page");
 
-  const getFilms = async (resource: string, page = 1) => {
+  const getFilms = async (page = 1) => {
     setFilms(null);
     setIsLoading(true);
     setError(null);
     setSearchInput("");
 
     try {
-      const data = await API.getResources<SW_FilmsResponse>(resource, page);
+      const data = await API.getResources<SW_FilmsResponse>("films", page);
       setFilms(data);
       console.log(data);
     } catch (err) {
@@ -77,7 +78,7 @@ const FilmsPage = () => {
     }
 
     setSearchParams({
-      query: searchInput,
+      query: trimmedSearchInput,
       page: "1",
     });
 
@@ -90,11 +91,12 @@ const FilmsPage = () => {
         query: searchParamsQuery,
         page: newPage.toString(),
       });
+      searchFilms(searchParamsQuery, newPage);
     } else {
       setSearchParams({
         page: newPage.toString(),
       });
-      getFilms("films", newPage);
+      getFilms(newPage);
     }
   };
 
@@ -108,7 +110,7 @@ const FilmsPage = () => {
       setSearchInput(searchParamsQuery);
       searchFilms(searchParamsQuery, page);
     } else {
-      getFilms("films");
+      getFilms(page);
     }
   }, [searchParamsQuery, searchParamsPage]);
 
@@ -168,21 +170,11 @@ const FilmsPage = () => {
               </Col>
             ))}
           </Row>
-          <div className="d-flex justify-content-between align-items-center">
-            <Button
-              onClick={() => handlePageChange(films.current_page - 1)}
-              disabled={films.current_page === 1}
-            >
-              Previous page
-            </Button>
-            <span>{`Page ${films.current_page} of ${films.last_page}`}</span>
-            <Button
-              onClick={() => handlePageChange(films.current_page + 1)}
-              disabled={films.current_page === films.last_page}
-            >
-              Next page
-            </Button>
-          </div>
+          <Pagination
+            currentPage={films.current_page}
+            lastPage={films.last_page}
+            onPageChange={handlePageChange}
+          />
         </>
       )}
     </>
