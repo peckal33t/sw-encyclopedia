@@ -80,13 +80,29 @@ const PlanetsPage = () => {
     searchPlanets(trimmedSearchInput, 1);
   };
 
+  const handlePageChange = (newPage: number) => {
+    if (searchParamsQuery) {
+      setSearchParams({
+        query: searchParamsQuery,
+        page: newPage.toString(),
+      });
+    } else {
+      setSearchParams({
+        page: newPage.toString(),
+      });
+      getPlanets("planets", newPage);
+    }
+  };
+
   useEffect(() => {
     inputSearchRef.current?.focus();
   }, []);
 
   useEffect(() => {
+    const page = searchParamsPage ? parseInt(searchParamsPage) : 1;
     if (searchParamsQuery) {
       setSearchInput(searchParamsQuery);
+      searchPlanets(searchParamsQuery, page);
     } else {
       getPlanets("planets");
     }
