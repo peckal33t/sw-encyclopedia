@@ -64,6 +64,10 @@ const PlanetsPage = () => {
   };
 
   useEffect(() => {
+    inputSearchRef.current?.focus();
+  }, []);
+
+  useEffect(() => {
     getPlanets("planets");
   }, []);
 
@@ -79,6 +83,7 @@ const PlanetsPage = () => {
               placeholder="Enter your search"
               type="text"
               value={searchInput}
+              ref={inputSearchRef}
             />
             <div className="d-flex justify-content-end p-2">
               <Button disabled>Search</Button>
