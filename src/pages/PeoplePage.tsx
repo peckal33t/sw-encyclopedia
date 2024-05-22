@@ -8,6 +8,7 @@ import Row from "react-bootstrap/Row";
 import Col from "react-bootstrap/Col";
 import Card from "react-bootstrap/Card";
 import Button from "react-bootstrap/Button";
+import Pagination from "../components/Pagination";
 
 const PeoplePage = () => {
   const [people, setPeople] = useState<SW_PeopleResponse | null>(null);
@@ -167,21 +168,11 @@ const PeoplePage = () => {
               </Col>
             ))}
           </Row>
-          <div className="d-flex justify-content-between align-items-center">
-            <Button
-              onClick={() => handlePageChange(people.current_page - 1)}
-              disabled={people.current_page === 1}
-            >
-              Previous page
-            </Button>
-            <span>{`Page ${people.current_page} of ${people.last_page}`}</span>
-            <Button
-              onClick={() => handlePageChange(people.current_page + 1)}
-              disabled={people.current_page === people.last_page}
-            >
-              Next page
-            </Button>
-          </div>
+          <Pagination
+            currentPage={people.current_page}
+            lastPage={people.last_page}
+            onPageChange={handlePageChange}
+          />
         </>
       )}
     </>
