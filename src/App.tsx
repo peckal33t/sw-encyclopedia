@@ -6,6 +6,7 @@ import HomePage from "./pages/HomePage";
 import FilmsPage from "./pages/FilmsPage";
 import FilmPage from "./pages/FilmPage";
 import PeoplePage from "./pages/PeoplePage";
+import PlanetsPage from "./pages/PlanetsPage";
 
 const App = () => {
   return (
@@ -17,6 +18,7 @@ const App = () => {
           <Route path="/films" element={<FilmsPage />} />
           <Route path="/films:id" element={<FilmPage />} />
           <Route path="/people" element={<PeoplePage />} />
+          <Route path="/planets" element={<PlanetsPage />} />
         </Routes>
       </Container>
     </div>
