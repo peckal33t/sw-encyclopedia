@@ -8,6 +8,7 @@ import Row from "react-bootstrap/Row";
 import Col from "react-bootstrap/Col";
 import Card from "react-bootstrap/Card";
 import Button from "react-bootstrap/Button";
+import Pagination from "../components/Pagination";
 
 const PlanetsPage = () => {
   const [planets, setPlanets] = useState<SW_PlanetsResponse | null>(null);
@@ -23,13 +24,13 @@ const PlanetsPage = () => {
   const searchParamsQuery = searchParams.get("query");
   const searchParamsPage = searchParams.get("page");
 
-  const getPlanets = async (resource: string, page = 1) => {
+  const getPlanets = async (page = 1) => {
     setPlanets(null);
     setIsLoading(true);
     setError(null);
 
     try {
-      const data = await API.getResources<SW_PlanetsResponse>(resource, page);
+      const data = await API.getResources<SW_PlanetsResponse>("planets", page);
       setPlanets(data);
     } catch (err) {
       if (err instanceof Error) {
@@ -90,7 +91,7 @@ const PlanetsPage = () => {
       setSearchParams({
         page: newPage.toString(),
       });
-      getPlanets("planets", newPage);
+      getPlanets(newPage);
     }
   };
 
@@ -104,9 +105,8 @@ const PlanetsPage = () => {
       setSearchInput(searchParamsQuery);
       searchPlanets(searchParamsQuery, page);
     } else {
-      getPlanets("planets");
+      getPlanets(page);
     }
-    getPlanets("planets");
   }, [searchParamsQuery, searchParamsPage]);
 
   return (
@@ -137,25 +137,39 @@ const PlanetsPage = () => {
         </Form>
       </div>
       {!isLoading && !error && planets && (
-        <Row>
-          {planets.data.map((planet) => (
-            <Col key={planet.id} xs={12} md={6} lg={4} className="mb-3">
-              <Card className="p-3">
-                <Card.Title>{planet.name}</Card.Title>
-                <Card.Text>Appears in: {planet.films_count} films</Card.Text>
-                <Button
-                  onClick={() => {
-                    navigate(`/planets/${planet.id}`);
-                  }}
-                  variant="primary"
-                  size="sm"
-                >
-                  Read more
-                </Button>
-              </Card>
-            </Col>
-          ))}
-        </Row>
+        <>
+          {planets.data.length > 0 && searchParamsQuery ? (
+            <p>
+              {planets.total} search result for "{searchParamsQuery}"
+            </p>
+          ) : (
+            <p>{planets.total} results showing for Planets</p>
+          )}
+          <Row>
+            {planets.data.map((planet) => (
+              <Col key={planet.id} xs={12} md={6} lg={4} className="mb-3">
+                <Card className="p-3">
+                  <Card.Title>{planet.name}</Card.Title>
+                  <Card.Text>Appears in: {planet.films_count} films</Card.Text>
+                  <Button
+                    onClick={() => {
+                      navigate(`/planets/${planet.id}`);
+                    }}
+                    variant="primary"
+                    size="sm"
+                  >
+                    Read more
+                  </Button>
+                </Card>
+              </Col>
+            ))}
+          </Row>
+          <Pagination
+            currentPage={planets.current_page}
+            lastPage={planets.last_page}
+            onPageChange={handlePageChange}
+          />
+        </>
       )}
     </>
   );
