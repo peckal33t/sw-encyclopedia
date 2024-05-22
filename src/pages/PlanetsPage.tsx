@@ -85,8 +85,13 @@ const PlanetsPage = () => {
   }, []);
 
   useEffect(() => {
+    if (searchParamsQuery) {
+      setSearchInput(searchParamsQuery);
+    } else {
+      getPlanets("planets");
+    }
     getPlanets("planets");
-  }, []);
+  }, [searchParamsQuery, searchParamsPage]);
 
   return (
     <>
@@ -97,6 +102,7 @@ const PlanetsPage = () => {
           <Form.Group className="mb-3" controlId="searchQuery">
             <Form.Label>Search for planet</Form.Label>
             <Form.Control
+              onChange={(e) => setSearchInput(e.target.value)}
               placeholder="Enter your search"
               type="text"
               value={searchInput}
