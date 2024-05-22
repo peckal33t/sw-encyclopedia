@@ -119,7 +119,7 @@ const PeoplePage = () => {
       <div>
         <Form className="mb-4" onSubmit={handleSubmit}>
           <Form.Group className="mb-3" controlId="searchQuery">
-            <Form.Label>Search for film</Form.Label>
+            <Form.Label>Search for person</Form.Label>
             <Form.Control
               onChange={(e) => setSearchInput(e.target.value)}
               placeholder="Enter your search"
@@ -146,7 +146,7 @@ const PeoplePage = () => {
               {people.total} search result for "{searchParamsQuery}"
             </p>
           ) : (
-            <p>{people.total} results showing for Persons</p>
+            <p>{people.total} results showing for People</p>
           )}
           <Row>
             {people.data.map((person) => (
