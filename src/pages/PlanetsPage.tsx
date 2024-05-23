@@ -28,6 +28,7 @@ const PlanetsPage = () => {
     setPlanets(null);
     setIsLoading(true);
     setError(null);
+    setSearchInput("");
 
     try {
       const data = await API.getResources<SW_PlanetsResponse>("planets", page);
