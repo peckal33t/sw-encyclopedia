@@ -64,6 +64,23 @@ const SpeciesPage = () => {
     setIsLoading(false);
   };
 
+  const handleSubmit = (e: React.FormEvent) => {
+    e.preventDefault();
+
+    const trimmedSearchInput = searchInput.trim();
+
+    if (!trimmedSearchInput.length) {
+      return;
+    }
+
+    setSearchParams({
+      query: trimmedSearchInput,
+      page: "1",
+    });
+
+    searchSpecies(trimmedSearchInput, 1);
+  };
+
   useEffect(() => {
     inputSearchRef.current?.focus();
   }, []);
@@ -76,17 +93,24 @@ const SpeciesPage = () => {
     <>
       <>
         <div>
-          <Form className="mb-4">
+          <Form className="mb-4" onSubmit={handleSubmit}>
             <Form.Group className="mb-3" controlId="searchQuery">
               <Form.Label>Search for specie</Form.Label>
               <Form.Control
+                onChange={(e) => setSearchInput(e.target.value)}
                 placeholder="Enter your search"
                 type="text"
                 value={searchInput}
                 ref={inputSearchRef}
               />
               <div className="d-flex justify-content-end p-2">
-                <Button disabled>Search</Button>
+                <Button
+                  onClick={handleSubmit}
+                  onSubmit={handleSubmit}
+                  disabled={searchInput.trim().length < 1}
+                >
+                  Search
+                </Button>
               </div>
             </Form.Group>
           </Form>
