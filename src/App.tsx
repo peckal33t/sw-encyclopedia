@@ -7,6 +7,7 @@ import FilmsPage from "./pages/FilmsPage";
 import FilmPage from "./pages/FilmPage";
 import PeoplePage from "./pages/PeoplePage";
 import PlanetsPage from "./pages/PlanetsPage";
+import SpeciesPage from "./pages/SpeciesPage";
 
 const App = () => {
   return (
@@ -19,6 +20,7 @@ const App = () => {
           <Route path="/films:id" element={<FilmPage />} />
           <Route path="/people" element={<PeoplePage />} />
           <Route path="/planets" element={<PlanetsPage />} />
+          <Route path="/species" element={<SpeciesPage />} />
         </Routes>
       </Container>
     </div>
