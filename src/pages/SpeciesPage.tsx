@@ -86,7 +86,11 @@ const SpeciesPage = () => {
   }, []);
 
   useEffect(() => {
-    getSpecies("species");
+    if (searchParamsQuery) {
+      setSearchInput(searchParamsQuery);
+    } else {
+      getSpecies("species");
+    }
   }, []);
 
   return (
