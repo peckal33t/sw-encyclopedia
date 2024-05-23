@@ -42,6 +42,32 @@ const SpeciesPage = () => {
     setIsLoading(false);
   };
 
+  const searchSpecies = async (searchQuery: string, page = 1) => {
+    setSpecies(null);
+    setIsLoading(true);
+    setError(null);
+
+    try {
+      const data = await API.searchResource<SW_SpeciesResponse>(
+        "species",
+        searchQuery,
+        page
+      );
+      setSpecies(data);
+    } catch (err) {
+      if (err instanceof Error) {
+        setError(err.message);
+      } else {
+        setError("Stop with the errors!");
+      }
+    }
+    setIsLoading(false);
+  };
+
+  useEffect(() => {
+    inputSearchRef.current?.focus();
+  }, []);
+
   useEffect(() => {
     getSpecies("species");
   }, []);
@@ -49,6 +75,22 @@ const SpeciesPage = () => {
   return (
     <>
       <>
+        <div>
+          <Form className="mb-4">
+            <Form.Group className="mb-3" controlId="searchQuery">
+              <Form.Label>Search for specie</Form.Label>
+              <Form.Control
+                placeholder="Enter your search"
+                type="text"
+                value={searchInput}
+                ref={inputSearchRef}
+              />
+              <div className="d-flex justify-content-end p-2">
+                <Button disabled>Search</Button>
+              </div>
+            </Form.Group>
+          </Form>
+        </div>
         {isLoading && <p>Loading...</p>}
         {error && <Alert variant="warning">{error}</Alert>}
         {!isLoading && !error && species && (
