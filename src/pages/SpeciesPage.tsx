@@ -8,6 +8,7 @@ import Row from "react-bootstrap/Row";
 import Col from "react-bootstrap/Col";
 import Card from "react-bootstrap/Card";
 import Button from "react-bootstrap/Button";
+import Pagination from "../components/Pagination";
 
 const SpeciesPage = () => {
   const [species, setSpecies] = useState<SW_SpeciesResponse | null>(null);
@@ -23,14 +24,14 @@ const SpeciesPage = () => {
   const searchParamsQuery = searchParams.get("query");
   const searchParamsPage = searchParams.get("page");
 
-  const getSpecies = async (resource: string, page = 1) => {
+  const getSpecies = async (page = 1) => {
     setSpecies(null);
     setIsLoading(true);
     setError(null);
     setSearchInput("");
 
     try {
-      const data = await API.getResources<SW_SpeciesResponse>(resource, page);
+      const data = await API.getResources<SW_SpeciesResponse>("species", page);
       setSpecies(data);
     } catch (err) {
       if (err instanceof Error) {
@@ -91,7 +92,7 @@ const SpeciesPage = () => {
       setSearchParams({
         page: newPage.toString(),
       });
-      getSpecies("species", newPage);
+      getSpecies(newPage);
     }
   };
 
@@ -105,39 +106,46 @@ const SpeciesPage = () => {
       setSearchInput(searchParamsQuery);
       searchSpecies(searchParamsQuery, page);
     } else {
-      getSpecies("species");
+      getSpecies(page);
     }
   }, []);
 
   return (
     <>
-      <>
-        <div>
-          <Form className="mb-4" onSubmit={handleSubmit}>
-            <Form.Group className="mb-3" controlId="searchQuery">
-              <Form.Label>Search for specie</Form.Label>
-              <Form.Control
-                onChange={(e) => setSearchInput(e.target.value)}
-                placeholder="Enter your search"
-                type="text"
-                value={searchInput}
-                ref={inputSearchRef}
-              />
-              <div className="d-flex justify-content-end p-2">
-                <Button
-                  onClick={handleSubmit}
-                  onSubmit={handleSubmit}
-                  disabled={searchInput.trim().length < 1}
-                >
-                  Search
-                </Button>
-              </div>
-            </Form.Group>
-          </Form>
-        </div>
-        {isLoading && <p>Loading...</p>}
-        {error && <Alert variant="warning">{error}</Alert>}
-        {!isLoading && !error && species && (
+      {isLoading && <p>Loading...</p>}
+      {error && <Alert variant="warning">{error}</Alert>}
+      <div>
+        <Form className="mb-4" onSubmit={handleSubmit}>
+          <Form.Group className="mb-3" controlId="searchQuery">
+            <Form.Label>Search for specie</Form.Label>
+            <Form.Control
+              onChange={(e) => setSearchInput(e.target.value)}
+              placeholder="Enter your search"
+              type="text"
+              value={searchInput}
+              ref={inputSearchRef}
+            />
+            <div className="d-flex justify-content-end p-2">
+              <Button
+                onClick={handleSubmit}
+                onSubmit={handleSubmit}
+                disabled={searchInput.trim().length < 1}
+              >
+                Search
+              </Button>
+            </div>
+          </Form.Group>
+        </Form>
+      </div>
+      {!isLoading && !error && species && (
+        <>
+          {species.data.length > 0 && searchParamsQuery ? (
+            <p>
+              {species.total} search result for "{searchParamsQuery}"
+            </p>
+          ) : (
+            <p>{species.total} results showing for Species</p>
+          )}
           <Row>
             {species.data.map((specie) => (
               <Col key={specie.id} xs={12} md={6} lg={4} className="mb-3">
@@ -159,8 +167,13 @@ const SpeciesPage = () => {
               </Col>
             ))}
           </Row>
-        )}
-      </>
+          <Pagination
+            currentPage={species.current_page}
+            lastPage={species.last_page}
+            onPageChange={handlePageChange}
+          />
+        </>
+      )}
     </>
   );
 };
