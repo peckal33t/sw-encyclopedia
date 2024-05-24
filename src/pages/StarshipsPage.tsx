@@ -63,6 +63,23 @@ const StarshipsPage = () => {
     setIsLoading(false);
   };
 
+  const handleSubmit = (e: React.FormEvent) => {
+    e.preventDefault();
+
+    const trimmedSearchInput = searchInput.trim();
+
+    if (!trimmedSearchInput.length) {
+      return;
+    }
+
+    setSearchParams({
+      query: trimmedSearchInput,
+      page: "1",
+    });
+
+    searchStarships(trimmedSearchInput, 1);
+  };
+
   useEffect(() => {
     inputSearchRef.current?.focus();
   }, []);
@@ -77,7 +94,7 @@ const StarshipsPage = () => {
         {isLoading && <p>Loading...</p>}
         {error && <Alert variant="warning">{error}</Alert>}
         <div>
-          <Form className="mb-4">
+          <Form className="mb-4" onSubmit={handleSubmit}>
             <Form.Group className="mb-3" controlId="searchQuery">
               <Form.Label>Search for starship</Form.Label>
               <Form.Control
@@ -87,7 +104,13 @@ const StarshipsPage = () => {
                 ref={inputSearchRef}
               />
               <div className="d-flex justify-content-end p-2">
-                <Button disabled>Search</Button>
+                <Button
+                  onClick={handleSubmit}
+                  onSubmit={handleSubmit}
+                  disabled={searchInput.trim().length < 1}
+                >
+                  Search
+                </Button>
               </div>
             </Form.Group>
           </Form>
