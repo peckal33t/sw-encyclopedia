@@ -155,6 +155,10 @@ const StarshipsPage = () => {
                 <Card className="p-3">
                   <Card.Title>{starship.name}</Card.Title>
                   <Card.Text>
+                    Max atmosphering speed: {starship.max_atmosphering_speed}{" "}
+                    km/h
+                  </Card.Text>
+                  <Card.Text>
                     Appears in: {starship.films_count} films
                   </Card.Text>
                   <div className="d-flex justify-content-start">
