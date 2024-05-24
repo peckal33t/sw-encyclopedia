@@ -86,7 +86,11 @@ const VehiclesPage = () => {
   }, []);
 
   useEffect(() => {
-    getVehicles("vehicles");
+    if (searchParamsQuery) {
+      setSearchInput(searchParamsQuery);
+    } else {
+      getVehicles("vehicles");
+    }
   }, []);
 
   return (
