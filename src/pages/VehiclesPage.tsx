@@ -64,12 +64,32 @@ const VehiclesPage = () => {
   };
 
   useEffect(() => {
+    inputSearchRef.current?.focus();
+  }, []);
+
+  useEffect(() => {
     getVehicles("vehicles");
   }, []);
 
   return (
     <>
       <>
+        <div>
+          <Form className="mb-4">
+            <Form.Group className="mb-3" controlId="searchQuery">
+              <Form.Label>Search for vehicle</Form.Label>
+              <Form.Control
+                placeholder="Enter your search"
+                type="text"
+                value={searchInput}
+                ref={inputSearchRef}
+              />
+              <div className="d-flex justify-content-end p-2">
+                <Button disabled>Search</Button>
+              </div>
+            </Form.Group>
+          </Form>
+        </div>
         {isLoading && <p>Loading...</p>}
         {error && <Alert variant="warning">{error}</Alert>}
         {!isLoading && !error && vehicles && (
