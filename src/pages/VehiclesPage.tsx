@@ -41,6 +41,28 @@ const VehiclesPage = () => {
     setIsLoading(false);
   };
 
+  const searchVehicles = async (searchQuery: string, page = 1) => {
+    setVehicles(null);
+    setIsLoading(true);
+    setError(null);
+
+    try {
+      const data = await API.searchResource<SW_VehiclesResponse>(
+        "vehicles",
+        searchQuery,
+        page
+      );
+      setVehicles(data);
+    } catch (err) {
+      if (err instanceof Error) {
+        setError(err.message);
+      } else {
+        setError("Stop with the errors!");
+      }
+    }
+    setIsLoading(false);
+  };
+
   useEffect(() => {
     getVehicles("vehicles");
   }, []);
