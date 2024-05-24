@@ -81,13 +81,29 @@ const StarshipsPage = () => {
     searchStarships(trimmedSearchInput, 1);
   };
 
+  const handlePageChange = (newPage: number) => {
+    if (searchParamsQuery) {
+      setSearchParams({
+        query: searchParamsQuery,
+        page: newPage.toString(),
+      });
+    } else {
+      setSearchParams({
+        page: newPage.toString(),
+      });
+      getStarships("starships", newPage);
+    }
+  };
+
   useEffect(() => {
     inputSearchRef.current?.focus();
   }, []);
 
   useEffect(() => {
+    const page = searchParamsPage ? parseInt(searchParamsPage) : 1;
     if (searchParamsQuery) {
       setSearchInput(searchParamsQuery);
+      searchStarships(searchParamsQuery, page);
     } else {
       getStarships("starships");
     }
