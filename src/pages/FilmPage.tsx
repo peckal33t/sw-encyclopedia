@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { useParams, useNavigate } from "react-router-dom";
 import { getResourceById } from "../services/API";
 import { SW_Film } from "../types/Films.types";
@@ -11,6 +11,8 @@ const FilmPage = () => {
   const navigate = useNavigate();
 
   const { id } = useParams();
+
+  const filmId = Number(id);
 
   const getFilmInfo = async (id: number) => {
     setIsLoading(true);
@@ -28,6 +30,14 @@ const FilmPage = () => {
     }
     setIsLoading(false);
   };
+
+  useEffect(() => {
+    const validResourceId = Number(filmId);
+    if (!validResourceId) {
+      return;
+    }
+    getFilmInfo(filmId);
+  }, [filmId]);
 
   return <>FilmPage</>;
 };
