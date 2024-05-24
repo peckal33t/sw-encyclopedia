@@ -12,6 +12,23 @@ const FilmPage = () => {
 
   const { id } = useParams();
 
+  const getFilmInfo = async (id: number) => {
+    setIsLoading(true);
+    setError(null);
+
+    try {
+      const data = await getResourceById<SW_Film>("/films", id);
+      setFilm(data);
+    } catch (err) {
+      if (err instanceof Error) {
+        setError(err.message);
+      } else {
+        setError("Stop with the errors!");
+      }
+    }
+    setIsLoading(false);
+  };
+
   return <>FilmPage</>;
 };
 
