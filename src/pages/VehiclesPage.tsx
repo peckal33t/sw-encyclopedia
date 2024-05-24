@@ -8,6 +8,7 @@ import Row from "react-bootstrap/Row";
 import Col from "react-bootstrap/Col";
 import Card from "react-bootstrap/Card";
 import Button from "react-bootstrap/Button";
+import Pagination from "../components/Pagination";
 
 const VehiclesPage = () => {
   const [vehicles, setVehicles] = useState<SW_VehiclesResponse | null>(null);
@@ -169,6 +170,11 @@ const VehiclesPage = () => {
               </Col>
             ))}
           </Row>
+          <Pagination
+            currentPage={vehicles.current_page}
+            lastPage={vehicles.last_page}
+            onPageChange={handlePageChange}
+          />
         </>
       )}
     </>
