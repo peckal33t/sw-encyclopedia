@@ -151,6 +151,9 @@ const PlanetsPage = () => {
               <Col key={planet.id} xs={12} md={6} lg={4} className="mb-3">
                 <Card className="p-3">
                   <Card.Title>{planet.name}</Card.Title>
+                  <Card.Text>
+                    Population: {planet.population} residents
+                  </Card.Text>
                   <Card.Text>Appears in: {planet.films_count} films</Card.Text>
                   <div className="d-flex justify-content-start">
                     <Button
