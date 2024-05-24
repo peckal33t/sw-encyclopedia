@@ -8,6 +8,7 @@ import Row from "react-bootstrap/Row";
 import Col from "react-bootstrap/Col";
 import Card from "react-bootstrap/Card";
 import Button from "react-bootstrap/Button";
+import Pagination from "../components/Pagination";
 
 const StarshipsPage = () => {
   const [starships, setStarships] = useState<SW_StarshipsResponse | null>(null);
@@ -23,14 +24,17 @@ const StarshipsPage = () => {
   const searchParamsQuery = searchParams.get("query");
   const searchParamsPage = searchParams.get("page");
 
-  const getStarships = async (resource: string, page = 1) => {
+  const getStarships = async (page = 1) => {
     setStarships(null);
     setIsLoading(true);
     setError(null);
     setSearchInput("");
 
     try {
-      const data = await API.getResources<SW_StarshipsResponse>(resource, page);
+      const data = await API.getResources<SW_StarshipsResponse>(
+        "starships",
+        page
+      );
       setStarships(data);
     } catch (err) {
       if (err instanceof Error) {
@@ -91,7 +95,7 @@ const StarshipsPage = () => {
       setSearchParams({
         page: newPage.toString(),
       });
-      getStarships("starships", newPage);
+      getStarships(newPage);
     }
   };
 
@@ -105,44 +109,51 @@ const StarshipsPage = () => {
       setSearchInput(searchParamsQuery);
       searchStarships(searchParamsQuery, page);
     } else {
-      getStarships("starships");
+      getStarships(page);
     }
   }, []);
 
   return (
     <>
-      <>
-        {isLoading && <p>Loading...</p>}
-        {error && <Alert variant="warning">{error}</Alert>}
-        <div>
-          <Form className="mb-4" onSubmit={handleSubmit}>
-            <Form.Group className="mb-3" controlId="searchQuery">
-              <Form.Label>Search for starship</Form.Label>
-              <Form.Control
-                placeholder="Enter your search"
-                type="text"
-                value={searchInput}
-                ref={inputSearchRef}
-              />
-              <div className="d-flex justify-content-end p-2">
-                <Button
-                  onClick={handleSubmit}
-                  onSubmit={handleSubmit}
-                  disabled={searchInput.trim().length < 1}
-                >
-                  Search
-                </Button>
-              </div>
-            </Form.Group>
-          </Form>
-        </div>
-        {!isLoading && !error && starships && (
+      {isLoading && <p>Loading...</p>}
+      {error && <Alert variant="warning">{error}</Alert>}
+      <div>
+        <Form className="mb-4" onSubmit={handleSubmit}>
+          <Form.Group className="mb-3" controlId="searchQuery">
+            <Form.Label>Search for starship</Form.Label>
+            <Form.Control
+              onChange={(e) => setSearchInput(e.target.value)}
+              placeholder="Enter your search"
+              type="text"
+              value={searchInput}
+              ref={inputSearchRef}
+            />
+            <div className="d-flex justify-content-end p-2">
+              <Button
+                onClick={handleSubmit}
+                onSubmit={handleSubmit}
+                disabled={searchInput.trim().length < 1}
+              >
+                Search
+              </Button>
+            </div>
+          </Form.Group>
+        </Form>
+      </div>
+      {!isLoading && !error && starships && (
+        <>
+          {starships.data.length > 0 && searchParamsQuery ? (
+            <p>
+              {starships.total} search result for "{searchParamsQuery}"
+            </p>
+          ) : (
+            <p>{starships.total} results showing for Starships</p>
+          )}
           <Row>
             {starships.data.map((starship) => (
               <Col key={starship.id} xs={12} md={6} lg={4} className="mb-3">
                 <Card className="p-3">
                   <Card.Title>{starship.name}</Card.Title>
-                  <Card.Text>Manufacturer: {starship.manufacturer}</Card.Text>
                   <Card.Text>
                     Appears in: {starship.films_count} films
                   </Card.Text>
@@ -160,8 +171,13 @@ const StarshipsPage = () => {
               </Col>
             ))}
           </Row>
-        )}
-      </>
+          <Pagination
+            currentPage={starships.current_page}
+            lastPage={starships.last_page}
+            onPageChange={handlePageChange}
+          />
+        </>
+      )}
     </>
   );
 };
