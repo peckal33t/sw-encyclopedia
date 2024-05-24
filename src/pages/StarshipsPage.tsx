@@ -41,6 +41,32 @@ const StarshipsPage = () => {
     setIsLoading(false);
   };
 
+  const searchStarships = async (searchQuery: string, page = 1) => {
+    setStarships(null);
+    setIsLoading(false);
+    setError(null);
+
+    try {
+      const data = await API.searchResource<SW_StarshipsResponse>(
+        "starships",
+        searchQuery,
+        page
+      );
+      setStarships(data);
+    } catch (err) {
+      if (err instanceof Error) {
+        setError(err.message);
+      } else {
+        setError("Stop with the errors!");
+      }
+    }
+    setIsLoading(false);
+  };
+
+  useEffect(() => {
+    inputSearchRef.current?.focus();
+  }, []);
+
   useEffect(() => {
     getStarships("starships");
   }, []);
@@ -50,6 +76,22 @@ const StarshipsPage = () => {
       <>
         {isLoading && <p>Loading...</p>}
         {error && <Alert variant="warning">{error}</Alert>}
+        <div>
+          <Form className="mb-4">
+            <Form.Group className="mb-3" controlId="searchQuery">
+              <Form.Label>Search for starship</Form.Label>
+              <Form.Control
+                placeholder="Enter your search"
+                type="text"
+                value={searchInput}
+                ref={inputSearchRef}
+              />
+              <div className="d-flex justify-content-end p-2">
+                <Button disabled>Search</Button>
+              </div>
+            </Form.Group>
+          </Form>
+        </div>
         {!isLoading && !error && starships && (
           <Row>
             {starships.data.map((starship) => (
