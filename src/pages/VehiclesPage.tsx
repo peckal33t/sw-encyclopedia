@@ -23,7 +23,59 @@ const VehiclesPage = () => {
   const searchParamsQuery = searchParams.get("query");
   const searchParamsPage = searchParams.get("page");
 
-  return <div>VehiclesPage</div>;
+  const getVehicles = async (resource: string, page = 1) => {
+    setVehicles(null);
+    setIsLoading(true);
+    setError(null);
+
+    try {
+      const data = await API.getResources<SW_VehiclesResponse>(resource, page);
+      setVehicles(data);
+    } catch (err) {
+      if (err instanceof Error) {
+        setError(err.message);
+      } else {
+        setError("Stop with the errors!");
+      }
+    }
+    setIsLoading(false);
+  };
+
+  useEffect(() => {
+    getVehicles("vehicles");
+  }, []);
+
+  return (
+    <>
+      <>
+        {isLoading && <p>Loading...</p>}
+        {error && <Alert variant="warning">{error}</Alert>}
+        {!isLoading && !error && vehicles && (
+          <Row>
+            {vehicles.data.map((vehicle) => (
+              <Col key={vehicle.id} xs={12} md={6} lg={4} className="mb-3">
+                <Card className="p-3">
+                  <Card.Title>{vehicle.name}</Card.Title>
+                  <Card.Text>Model: {vehicle.model}</Card.Text>
+                  <Card.Text>Appears in: {vehicle.films_count} films</Card.Text>
+                  <div className="d-flex justify-content-start">
+                    <Button
+                      onClick={() => {
+                        navigate(`/vehicles/${vehicle.id}`);
+                      }}
+                      variant="primary"
+                    >
+                      Read more
+                    </Button>
+                  </div>
+                </Card>
+              </Col>
+            ))}
+          </Row>
+        )}
+      </>
+    </>
+  );
 };
 
 export default VehiclesPage;
