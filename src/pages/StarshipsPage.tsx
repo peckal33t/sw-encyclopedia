@@ -27,6 +27,7 @@ const StarshipsPage = () => {
     setStarships(null);
     setIsLoading(true);
     setError(null);
+    setSearchInput("");
 
     try {
       const data = await API.getResources<SW_StarshipsResponse>(resource, page);
@@ -85,7 +86,11 @@ const StarshipsPage = () => {
   }, []);
 
   useEffect(() => {
-    getStarships("starships");
+    if (searchParamsQuery) {
+      setSearchInput(searchParamsQuery);
+    } else {
+      getStarships("starships");
+    }
   }, []);
 
   return (
