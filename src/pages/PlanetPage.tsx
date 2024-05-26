@@ -18,6 +18,23 @@ const PlanetPage = () => {
 
   const planetId = Number(id);
 
+  const getPlanetInfo = async (id: number) => {
+    setIsLoading(true);
+    setError(null);
+
+    try {
+      const data = await getResourceById<SW_Planet>("planet", id);
+      setPlanet(data);
+    } catch (err) {
+      if (err instanceof Error) {
+        setError(err.message);
+      } else {
+        setError("Stop with the errors!");
+      }
+    }
+    setIsLoading(false);
+  };
+
   return <>PlanetPage</>;
 };
 
