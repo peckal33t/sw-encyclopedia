@@ -18,6 +18,23 @@ const PersonPage = () => {
 
   const personId = Number(id);
 
+  const getPersonInfo = async (id: number) => {
+    setIsLoading(true);
+    setError(null);
+
+    try {
+      const data = await getResourceById<SW_Person>("/people", id);
+      setPerson(data);
+    } catch (err) {
+      if (err instanceof Error) {
+        setError(err.message);
+      } else {
+        setError("Stop with the errors!");
+      }
+    }
+    setIsLoading(false);
+  };
+
   return <>PersonPage</>;
 };
 
