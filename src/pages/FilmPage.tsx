@@ -3,12 +3,9 @@ import { useParams, useNavigate } from "react-router-dom";
 import { getResourceById } from "../services/API";
 import { SW_Film } from "../types/Films.types";
 import Alert from "react-bootstrap/Alert";
-import Form from "react-bootstrap/Form";
 import Row from "react-bootstrap/Row";
 import Col from "react-bootstrap/Col";
 import Card from "react-bootstrap/Card";
-import Button from "react-bootstrap/Button";
-import { CardTitle } from "react-bootstrap";
 
 const FilmPage = () => {
   const [film, setFilm] = useState<SW_Film | null>(null);
@@ -56,8 +53,44 @@ const FilmPage = () => {
             <Col key={film.id} xs={12} md={6} lg={12} className="mb-3">
               <Card>
                 <Card.Body>
-                  <CardTitle>{film.title}</CardTitle>
-                  <Card.Text>Director: {film.director}</Card.Text>
+                  <Card.Title>
+                    <h2 className="h4">
+                      <b>{film.title}</b>
+                    </h2>
+                  </Card.Title>
+                  <Card.Title>Description</Card.Title>
+                  <Card.Text>
+                    <b>Opening crawl</b>: {film.opening_crawl}
+                  </Card.Text>
+                  <Card.Title>Attributes</Card.Title>
+                  <Card.Text>
+                    <b>Episode</b>: {film.episode_id}
+                  </Card.Text>
+                  <Card.Text>
+                    <b>Director</b>: {film.director}
+                  </Card.Text>
+                  <Card.Text>
+                    <b>Producer</b>: {film.producer}
+                  </Card.Text>
+                  <Card.Text>
+                    <b>Release date</b>: {film.release_date}
+                  </Card.Text>
+                  <Card.Title>Links</Card.Title>
+                  <Card.Text>
+                    <b>Characters</b>
+                  </Card.Text>
+                  <Card.Text>
+                    <b>Planets</b>
+                  </Card.Text>
+                  <Card.Text>
+                    <b>Species</b>
+                  </Card.Text>
+                  <Card.Text>
+                    <b>Starships</b>
+                  </Card.Text>
+                  <Card.Text>
+                    <b>Vehicles</b>
+                  </Card.Text>
                 </Card.Body>
               </Card>
             </Col>
