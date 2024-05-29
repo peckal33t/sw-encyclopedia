@@ -3,12 +3,12 @@ import * as API from "../services/API";
 import { SW_PeopleResponse } from "../types/People.types";
 import { useNavigate, useSearchParams } from "react-router-dom";
 import Alert from "react-bootstrap/Alert";
-import Form from "react-bootstrap/Form";
 import Row from "react-bootstrap/Row";
 import Col from "react-bootstrap/Col";
 import Card from "react-bootstrap/Card";
 import Button from "react-bootstrap/Button";
 import Pagination from "../components/Pagination";
+import SearchForm from "../components/SearchForm";
 
 const PeoplePage = () => {
   const [people, setPeople] = useState<SW_PeopleResponse | null>(null);
@@ -116,29 +116,13 @@ const PeoplePage = () => {
     <>
       {isLoading && <p>Loading...</p>}
       {error && <Alert variant="warning">{error}</Alert>}
-      <div>
-        <Form className="mb-4" onSubmit={handleSubmit}>
-          <Form.Group className="mb-3" controlId="searchQuery">
-            <Form.Label>Search for person</Form.Label>
-            <Form.Control
-              onChange={(e) => setSearchInput(e.target.value)}
-              placeholder="Enter your search"
-              type="text"
-              value={searchInput}
-              ref={inputSearchRef}
-            />
-            <div className="d-flex justify-content-end p-2">
-              <Button
-                onClick={handleSubmit}
-                onSubmit={handleSubmit}
-                disabled={searchInput.trim().length < 1}
-              >
-                Search
-              </Button>
-            </div>
-          </Form.Group>
-        </Form>
-      </div>
+      <SearchForm
+        searchInput={searchInput}
+        setSearchInput={setSearchInput}
+        handleSubmit={handleSubmit}
+        inputRef={inputSearchRef}
+        label="Search for a person"
+      />
       {!isLoading && !error && people && (
         <>
           {people.data.length > 0 && searchParamsQuery ? (

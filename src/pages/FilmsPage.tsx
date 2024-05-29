@@ -123,6 +123,7 @@ const FilmsPage = () => {
         setSearchInput={setSearchInput}
         handleSubmit={handleSubmit}
         inputRef={inputSearchRef}
+        label="Search for a film"
       />
       {!isLoading && !error && films && (
         <>

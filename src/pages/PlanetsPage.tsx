@@ -3,12 +3,12 @@ import * as API from "../services/API";
 import { SW_PlanetsResponse } from "../types/Planets.types";
 import { useNavigate, useSearchParams } from "react-router-dom";
 import Alert from "react-bootstrap/Alert";
-import Form from "react-bootstrap/Form";
 import Row from "react-bootstrap/Row";
 import Col from "react-bootstrap/Col";
 import Card from "react-bootstrap/Card";
 import Button from "react-bootstrap/Button";
 import Pagination from "../components/Pagination";
+import SearchForm from "../components/SearchForm";
 
 const PlanetsPage = () => {
   const [planets, setPlanets] = useState<SW_PlanetsResponse | null>(null);
@@ -114,29 +114,13 @@ const PlanetsPage = () => {
     <>
       {isLoading && <p>Loading...</p>}
       {error && <Alert variant="warning">{error}</Alert>}
-      <div>
-        <Form className="mb-4" onSubmit={handleSubmit}>
-          <Form.Group className="mb-3" controlId="searchQuery">
-            <Form.Label>Search for planet</Form.Label>
-            <Form.Control
-              onChange={(e) => setSearchInput(e.target.value)}
-              placeholder="Enter your search"
-              type="text"
-              value={searchInput}
-              ref={inputSearchRef}
-            />
-            <div className="d-flex justify-content-end p-2">
-              <Button
-                onClick={handleSubmit}
-                onSubmit={handleSubmit}
-                disabled={searchInput.trim().length < 1}
-              >
-                Search
-              </Button>
-            </div>
-          </Form.Group>
-        </Form>
-      </div>
+      <SearchForm
+        searchInput={searchInput}
+        setSearchInput={setSearchInput}
+        handleSubmit={handleSubmit}
+        inputRef={inputSearchRef}
+        label="Search for a planet"
+      />
       {!isLoading && !error && planets && (
         <>
           {planets.data.length > 0 && searchParamsQuery ? (

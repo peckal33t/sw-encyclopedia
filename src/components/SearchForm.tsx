@@ -8,6 +8,7 @@ interface SearchFormProps {
   setSearchInput: (value: string) => void;
   handleSubmit: (e: React.FormEvent) => void;
   inputRef?: React.RefObject<HTMLInputElement>;
+  label: string;
 }
 
 const SearchForm: React.FC<SearchFormProps> = ({
@@ -15,12 +16,13 @@ const SearchForm: React.FC<SearchFormProps> = ({
   setSearchInput,
   handleSubmit,
   inputRef,
+  label,
 }) => {
   return (
     <div>
       <Form className="mb-4" onSubmit={handleSubmit}>
         <Form.Group className="mb-3" controlId="searchQuery">
-          <Form.Label>Search for film</Form.Label>
+          <Form.Label>{label}</Form.Label>
           <div className="position-relative">
             <Form.Control
               onChange={(e) => setSearchInput(e.target.value)}
