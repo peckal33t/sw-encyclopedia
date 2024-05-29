@@ -6,6 +6,7 @@ import Alert from "react-bootstrap/Alert";
 import Row from "react-bootstrap/Row";
 import Col from "react-bootstrap/Col";
 import Card from "react-bootstrap/Card";
+import { ListGroup } from "react-bootstrap";
 
 const VehiclePage = () => {
   const [vehicle, setVehicle] = useState<SW_Vehicle | null>(null);
@@ -94,9 +95,35 @@ const VehiclePage = () => {
                   <Card.Text>
                     <b>Pilots</b>
                   </Card.Text>
+                  <ListGroup className="mb-3 d-flex flex-row flex-wrap">
+                    {vehicle.pilots.map((pilot) => (
+                      <ListGroup.Item
+                        key={pilot.id}
+                        className="col-12 col-lg-4 custom-list-item click"
+                        onClick={() => {
+                          navigate(`/people/${pilot.id}`);
+                        }}
+                      >
+                        <p>{pilot.name}</p>
+                      </ListGroup.Item>
+                    ))}
+                  </ListGroup>
                   <Card.Text>
                     <b>Films</b>
                   </Card.Text>
+                  <ListGroup className="mb-3 d-flex flex-row flex-wrap">
+                    {vehicle.films.map((film) => (
+                      <ListGroup.Item
+                        key={film.id}
+                        className="col-12 col-lg-4 custom-list-item click"
+                        onClick={() => {
+                          navigate(`/films/${film.id}`);
+                        }}
+                      >
+                        <p>{film.title}</p>
+                      </ListGroup.Item>
+                    ))}
+                  </ListGroup>
                 </Card.Body>
               </Card>
             </Col>
