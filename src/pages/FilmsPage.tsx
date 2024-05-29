@@ -2,6 +2,8 @@ import { useState, useEffect, useRef } from "react";
 import * as API from "../services/API";
 import { SW_FilmsResponse } from "../types/Films.types";
 import { useNavigate, useSearchParams } from "react-router-dom";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faSearch } from "@fortawesome/free-solid-svg-icons";
 import Alert from "react-bootstrap/Alert";
 import Form from "react-bootstrap/Form";
 import Row from "react-bootstrap/Row";
@@ -122,20 +124,23 @@ const FilmsPage = () => {
         <Form className="mb-4" onSubmit={handleSubmit}>
           <Form.Group className="mb-3" controlId="searchQuery">
             <Form.Label>Search for film</Form.Label>
-            <Form.Control
-              onChange={(e) => setSearchInput(e.target.value)}
-              placeholder="Enter your search"
-              type="text"
-              value={searchInput}
-              ref={inputSearchRef}
-            />
-            <div className="d-flex justify-content-end p-2">
+            <div className="position-relative">
+              <Form.Control
+                onChange={(e) => setSearchInput(e.target.value)}
+                placeholder="Enter your search"
+                type="text"
+                value={searchInput}
+                ref={inputSearchRef}
+                className="pr-5"
+              />
               <Button
                 onClick={handleSubmit}
-                onSubmit={handleSubmit}
                 disabled={searchInput.trim().length < 1}
+                variant="outline-secondary"
+                type="submit"
+                className="position-absolute search-button"
               >
-                Search
+                <FontAwesomeIcon icon={faSearch} />
               </Button>
             </div>
           </Form.Group>

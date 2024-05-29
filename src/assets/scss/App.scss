@@ -1,3 +1,22 @@
 $headings-margin-bottom: 0.75em;
 
 @import "bootstrap/scss/bootstrap";
+
+.position-relative .form-control {
+  padding-right: 40px;
+}
+
+.search-button {
+  top: 50%;
+  transform: translateY(-50%);
+  right: 10px;
+  background: none;
+  border: none;
+  padding: 0;
+  margin: 0;
+  cursor: pointer;
+}
+
+.form-control:focus + .search-button {
+  box-shadow: none;
+}
