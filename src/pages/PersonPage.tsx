@@ -6,6 +6,7 @@ import Alert from "react-bootstrap/Alert";
 import Row from "react-bootstrap/Row";
 import Col from "react-bootstrap/Col";
 import Card from "react-bootstrap/Card";
+import { ListGroup } from "react-bootstrap";
 
 const PersonPage = () => {
   const [person, setPerson] = useState<SW_Person | null>(null);
@@ -81,15 +82,61 @@ const PersonPage = () => {
                   <Card.Text>
                     <b>Films</b>
                   </Card.Text>
+                  <ListGroup className="mb-3 d-flex flex-row flex-wrap">
+                    {person.films.map((film) => (
+                      <ListGroup.Item
+                        key={film.id}
+                        className="col-12 col-lg-4 custom-list-item click"
+                        onClick={() => {
+                          navigate(`/films/${film.id}`);
+                        }}
+                      >
+                        <p>{film.title}</p>
+                      </ListGroup.Item>
+                    ))}
+                  </ListGroup>
                   <Card.Text>
                     <b>Species</b>
                   </Card.Text>
+                  {person.species.map((specie) => (
+                    <ListGroup.Item
+                      key={specie.id}
+                      className="col-12 col-lg-4 custom-list-item click"
+                      onClick={() => {
+                        navigate(`/species/${specie.id}`);
+                      }}
+                    >
+                      <p>{specie.name}</p>
+                    </ListGroup.Item>
+                  ))}
                   <Card.Text>
                     <b>Starships</b>
                   </Card.Text>
+                  {person.starships.map((starship) => (
+                    <ListGroup.Item
+                      key={starship.id}
+                      className="col-12 col-lg-4 custom-list-item click"
+                      onClick={() => {
+                        navigate(`/starships/${starship.id}`);
+                      }}
+                    >
+                      <p>{starship.name}</p>
+                    </ListGroup.Item>
+                  ))}
                   <Card.Text>
                     <b>Vehicles</b>
                   </Card.Text>
+                  {person.vehicles.map((vehicle) => (
+                    <ListGroup.Item
+                      key={vehicle.id}
+                      className="col-12 col-lg-4 custom-list-item click"
+                      onClick={() => {
+                        navigate(`/vehicles/${vehicle.id}`);
+                      }}
+                    >
+                      <p>{vehicle.name}</p>
+                    </ListGroup.Item>
+                  ))}
                 </Card.Body>
               </Card>
             </Col>
