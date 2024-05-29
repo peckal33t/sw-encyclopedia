@@ -20,3 +20,13 @@ $headings-margin-bottom: 0.75em;
 .form-control:focus + .search-button {
   box-shadow: none;
 }
+
+.custom-list-item {
+  border: none;
+  padding: 0;
+  background-color: transparent;
+}
+
+.click {
+  cursor: pointer;
+}
