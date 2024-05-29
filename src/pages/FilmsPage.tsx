@@ -2,15 +2,13 @@ import { useState, useEffect, useRef } from "react";
 import * as API from "../services/API";
 import { SW_FilmsResponse } from "../types/Films.types";
 import { useNavigate, useSearchParams } from "react-router-dom";
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faSearch } from "@fortawesome/free-solid-svg-icons";
 import Alert from "react-bootstrap/Alert";
-import Form from "react-bootstrap/Form";
 import Row from "react-bootstrap/Row";
 import Col from "react-bootstrap/Col";
 import Card from "react-bootstrap/Card";
 import Button from "react-bootstrap/Button";
 import Pagination from "../components/Pagination";
+import SearchForm from "../components/SearchForm";
 
 const FilmsPage = () => {
   const [films, setFilms] = useState<SW_FilmsResponse | null>(null);
@@ -120,32 +118,12 @@ const FilmsPage = () => {
     <>
       {isLoading && <p>Loading...</p>}
       {error && <Alert variant="warning">{error}</Alert>}
-      <div>
-        <Form className="mb-4" onSubmit={handleSubmit}>
-          <Form.Group className="mb-3" controlId="searchQuery">
-            <Form.Label>Search for film</Form.Label>
-            <div className="position-relative">
-              <Form.Control
-                onChange={(e) => setSearchInput(e.target.value)}
-                placeholder="Enter your search"
-                type="text"
-                value={searchInput}
-                ref={inputSearchRef}
-                className="pr-5"
-              />
-              <Button
-                onClick={handleSubmit}
-                disabled={searchInput.trim().length < 1}
-                variant="outline-secondary"
-                type="submit"
-                className="position-absolute search-button"
-              >
-                <FontAwesomeIcon icon={faSearch} />
-              </Button>
-            </div>
-          </Form.Group>
-        </Form>
-      </div>
+      <SearchForm
+        searchInput={searchInput}
+        setSearchInput={setSearchInput}
+        handleSubmit={handleSubmit}
+        inputRef={inputSearchRef}
+      />
       {!isLoading && !error && films && (
         <>
           {films.data.length > 0 && searchParamsQuery ? (
