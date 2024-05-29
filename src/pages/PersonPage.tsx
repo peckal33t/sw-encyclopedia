@@ -98,45 +98,51 @@ const PersonPage = () => {
                   <Card.Text>
                     <b>Species</b>
                   </Card.Text>
-                  {person.species.map((specie) => (
-                    <ListGroup.Item
-                      key={specie.id}
-                      className="col-12 col-lg-4 custom-list-item click"
-                      onClick={() => {
-                        navigate(`/species/${specie.id}`);
-                      }}
-                    >
-                      <p>{specie.name}</p>
-                    </ListGroup.Item>
-                  ))}
+                  <ListGroup className="mb-3 d-flex flex-row flex-wrap">
+                    {person.species.map((specie) => (
+                      <ListGroup.Item
+                        key={specie.id}
+                        className="col-12 col-lg-4 custom-list-item click"
+                        onClick={() => {
+                          navigate(`/species/${specie.id}`);
+                        }}
+                      >
+                        <p>{specie.name}</p>
+                      </ListGroup.Item>
+                    ))}
+                  </ListGroup>
                   <Card.Text>
                     <b>Starships</b>
                   </Card.Text>
-                  {person.starships.map((starship) => (
-                    <ListGroup.Item
-                      key={starship.id}
-                      className="col-12 col-lg-4 custom-list-item click"
-                      onClick={() => {
-                        navigate(`/starships/${starship.id}`);
-                      }}
-                    >
-                      <p>{starship.name}</p>
-                    </ListGroup.Item>
-                  ))}
+                  <ListGroup className="mb-3 d-flex flex-row flex-wrap">
+                    {person.starships.map((starship) => (
+                      <ListGroup.Item
+                        key={starship.id}
+                        className="col-12 col-lg-4 custom-list-item click"
+                        onClick={() => {
+                          navigate(`/starships/${starship.id}`);
+                        }}
+                      >
+                        <p>{starship.name}</p>
+                      </ListGroup.Item>
+                    ))}
+                  </ListGroup>
                   <Card.Text>
                     <b>Vehicles</b>
                   </Card.Text>
-                  {person.vehicles.map((vehicle) => (
-                    <ListGroup.Item
-                      key={vehicle.id}
-                      className="col-12 col-lg-4 custom-list-item click"
-                      onClick={() => {
-                        navigate(`/vehicles/${vehicle.id}`);
-                      }}
-                    >
-                      <p>{vehicle.name}</p>
-                    </ListGroup.Item>
-                  ))}
+                  <ListGroup className="mb-3 d-flex flex-row flex-wrap">
+                    {person.vehicles.map((vehicle) => (
+                      <ListGroup.Item
+                        key={vehicle.id}
+                        className="col-12 col-lg-4 custom-list-item click"
+                        onClick={() => {
+                          navigate(`/vehicles/${vehicle.id}`);
+                        }}
+                      >
+                        <p>{vehicle.name}</p>
+                      </ListGroup.Item>
+                    ))}
+                  </ListGroup>
                 </Card.Body>
               </Card>
             </Col>

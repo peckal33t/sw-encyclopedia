@@ -6,6 +6,7 @@ import Alert from "react-bootstrap/Alert";
 import Row from "react-bootstrap/Row";
 import Col from "react-bootstrap/Col";
 import Card from "react-bootstrap/Card";
+import { ListGroup } from "react-bootstrap";
 
 const PlanetPage = () => {
   const [planet, setPlanet] = useState<SW_Planet | null>(null);
@@ -87,9 +88,35 @@ const PlanetPage = () => {
                   <Card.Text>
                     <b>Films</b>
                   </Card.Text>
+                  <ListGroup className="mb-3 d-flex flex-row flex-wrap">
+                    {planet.films.map((film) => (
+                      <ListGroup.Item
+                        key={film.id}
+                        className="col-12 col-lg-4 custom-list-item click"
+                        onClick={() => {
+                          navigate(`/films/${film.id}`);
+                        }}
+                      >
+                        <p>{film.title}</p>
+                      </ListGroup.Item>
+                    ))}
+                  </ListGroup>
                   <Card.Text>
                     <b>Residents</b>
                   </Card.Text>
+                  <ListGroup className="mb-3 d-flex flex-row flex-wrap">
+                    {planet.residents.map((resident) => (
+                      <ListGroup.Item
+                        key={resident.id}
+                        className="col-12 col-lg-4 custom-list-item click"
+                        onClick={() => {
+                          navigate(`/films/${resident.id}`);
+                        }}
+                      >
+                        <p>{resident.name}</p>
+                      </ListGroup.Item>
+                    ))}
+                  </ListGroup>
                 </Card.Body>
               </Card>
             </Col>
