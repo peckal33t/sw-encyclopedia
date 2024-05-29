@@ -60,28 +60,28 @@ const SpeciePage = () => {
                   </Card.Title>
                   <Card.Title>Attributes</Card.Title>
                   <Card.Text>
-                    <b>Classification:</b> {specie.classification}
+                    <b>Classification</b>: {specie.classification}
                   </Card.Text>
                   <Card.Text>
-                    <b>Designation:</b> {specie.designation}
+                    <b>Designation</b>: {specie.designation}
                   </Card.Text>
                   <Card.Text>
-                    <b>Average height:</b> {specie.average_height}
+                    <b>Average height</b>: {specie.average_height}
                   </Card.Text>
                   <Card.Text>
-                    <b>Average lifespan:</b> {specie.average_lifespan}
+                    <b>Average lifespan</b>: {specie.average_lifespan}
                   </Card.Text>
                   <Card.Text>
-                    <b>Eye colors:</b> {specie.eye_colors}
+                    <b>Eye colors</b>: {specie.eye_colors}
                   </Card.Text>
                   <Card.Text>
-                    <b>Hair colors:</b> {specie.hair_colors}
+                    <b>Hair colors</b>: {specie.hair_colors}
                   </Card.Text>
                   <Card.Text>
-                    <b>Skin colors:</b> {specie.skin_colors}
+                    <b>Skin colors</b>: {specie.skin_colors}
                   </Card.Text>
                   <Card.Text>
-                    <b>Language:</b> {specie.language}
+                    <b>Language</b>: {specie.language}
                   </Card.Text>
                   <Card.Title>Links</Card.Title>
                   <Card.Text>

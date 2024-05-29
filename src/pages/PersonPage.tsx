@@ -60,22 +60,22 @@ const PersonPage = () => {
                   </Card.Title>
                   <Card.Title>Attributes</Card.Title>
                   <Card.Text>
-                    <b>Birth year:</b> {person.birth_year}
+                    <b>Birth year</b>: {person.birth_year}
                   </Card.Text>
                   <Card.Text>
-                    <b>Eye color:</b> {person.eye_color}
+                    <b>Eye color</b>: {person.eye_color}
                   </Card.Text>
                   <Card.Text>
-                    <b>Hair color:</b> {person.hair_color}
+                    <b>Hair color</b>: {person.hair_color}
                   </Card.Text>
                   <Card.Text>
-                    <b>Height:</b> {person.height}
+                    <b>Height</b>: {person.height}
                   </Card.Text>
                   <Card.Text>
-                    <b>Mass:</b> {person.mass}
+                    <b>Mass</b>: {person.mass}
                   </Card.Text>
                   <Card.Text>
-                    <b>Skin color:</b> {person.skin_color}
+                    <b>Skin color</b>: {person.skin_color}
                   </Card.Text>
                   <Card.Title>Links</Card.Title>
                   <Card.Text>

@@ -60,28 +60,28 @@ const PlanetPage = () => {
                   </Card.Title>
                   <Card.Title>Attributes</Card.Title>
                   <Card.Text>
-                    <b>Rotation period:</b> {planet.rotation_period}
+                    <b>Rotation period</b>: {planet.rotation_period}
                   </Card.Text>
                   <Card.Text>
-                    <b>Orbital period:</b> {planet.orbital_period}
+                    <b>Orbital period</b>: {planet.orbital_period}
                   </Card.Text>
                   <Card.Text>
-                    <b>Diameter:</b> {planet.diameter}
+                    <b>Diameter</b>: {planet.diameter}
                   </Card.Text>
                   <Card.Text>
-                    <b>Climate:</b> {planet.climate}
+                    <b>Climate</b>: {planet.climate}
                   </Card.Text>
                   <Card.Text>
-                    <b>Gravity:</b> {planet.gravity}
+                    <b>Gravity</b>: {planet.gravity}
                   </Card.Text>
                   <Card.Text>
-                    <b>Terrain:</b> {planet.terrain}
+                    <b>Terrain</b>: {planet.terrain}
                   </Card.Text>
                   <Card.Text>
-                    <b>Surface water:</b> {planet.surface_water}
+                    <b>Surface water</b>: {planet.surface_water}
                   </Card.Text>
                   <Card.Text>
-                    <b>Population:</b> {planet.population}
+                    <b>Population</b>: {planet.population}
                   </Card.Text>
                   <Card.Title>Links</Card.Title>
                   <Card.Text>

@@ -60,35 +60,35 @@ const VehiclePage = () => {
                   </Card.Title>
                   <Card.Title>Attributes</Card.Title>
                   <Card.Text>
-                    <b>Model:</b> {vehicle.model}
+                    <b>Model</b>: {vehicle.model}
                   </Card.Text>
                   <Card.Text>
-                    <b>Vehicle class:</b> {vehicle.vehicle_class}
+                    <b>Vehicle class</b>: {vehicle.vehicle_class}
                   </Card.Text>
                   <Card.Text>
-                    <b>Manufacturer:</b> {vehicle.manufacturer}
+                    <b>Manufacturer</b>: {vehicle.manufacturer}
                   </Card.Text>
                   <Card.Text>
-                    <b>Length:</b> {vehicle.length}
+                    <b>Length</b>: {vehicle.length}
                   </Card.Text>
                   <Card.Text>
-                    <b>Cost in credits:</b> {vehicle.cost_in_credits}
+                    <b>Cost in credits</b>: {vehicle.cost_in_credits}
                   </Card.Text>
                   <Card.Text>
-                    <b>Crew:</b> {vehicle.crew}
+                    <b>Crew</b>: {vehicle.crew}
                   </Card.Text>
                   <Card.Text>
-                    <b>Passengers:</b> {vehicle.passengers}
+                    <b>Passengers</b>: {vehicle.passengers}
                   </Card.Text>
                   <Card.Text>
-                    <b>Max atmosphering seed:</b>
-                    {vehicle.max_atmosphering_speed}
+                    <b>Max atmosphering speed</b>:{" "}
+                    {vehicle.max_atmosphering_speed} km/h
                   </Card.Text>
                   <Card.Text>
-                    <b>Cargo capacity:</b> {vehicle.cargo_capacity}
+                    <b>Cargo capacity</b>: {vehicle.cargo_capacity}
                   </Card.Text>
                   <Card.Text>
-                    <b>Consumables:</b> {vehicle.consumables}
+                    <b>Consumables</b>: {vehicle.consumables}
                   </Card.Text>
                   <Card.Title>Links</Card.Title>
                   <Card.Text>
