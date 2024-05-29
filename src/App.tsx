@@ -10,8 +10,11 @@ import PersonPage from "./pages/PersonPage";
 import PlanetsPage from "./pages/PlanetsPage";
 import PlanetPage from "./pages/PlanetPage";
 import SpeciesPage from "./pages/SpeciesPage";
+import SpeciePage from "./pages/SpeciePage";
 import StarshipsPage from "./pages/StarshipsPage";
+import StarshipPage from "./pages/StarshipPage";
 import VehiclesPage from "./pages/VehiclesPage";
+import VehiclePage from "./pages/VehiclePage";
 import NotFoundPage from "./pages/NotFoundPage";
 
 const App = () => {
@@ -28,8 +31,11 @@ const App = () => {
           <Route path="/planets" element={<PlanetsPage />} />
           <Route path="/planets/:id" element={<PlanetPage />} />
           <Route path="/species" element={<SpeciesPage />} />
+          <Route path="/species/:id" element={<SpeciePage />} />
           <Route path="/starships" element={<StarshipsPage />} />
+          <Route path="/starships/:id" element={<StarshipPage />} />
           <Route path="/vehicles" element={<VehiclesPage />} />
+          <Route path="/vehicles/:id" element={<VehiclePage />} />
 
           <Route path="*" element={<NotFoundPage />}></Route>
         </Routes>
