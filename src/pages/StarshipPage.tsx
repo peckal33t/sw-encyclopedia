@@ -81,7 +81,7 @@ const StarshipPage = () => {
                     <b>Passengers:</b> {starship.passengers}
                   </Card.Text>
                   <Card.Text>
-                    <b>Max atmosphering seed:</b>{" "}
+                    <b>Max atmosphering seed:</b>
                     {starship.max_atmosphering_speed}
                   </Card.Text>
                   <Card.Text>
