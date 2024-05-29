@@ -6,6 +6,7 @@ import Alert from "react-bootstrap/Alert";
 import Row from "react-bootstrap/Row";
 import Col from "react-bootstrap/Col";
 import Card from "react-bootstrap/Card";
+import { ListGroup } from "react-bootstrap";
 
 const SpeciePage = () => {
   const [specie, setSpecie] = useState<SW_Specie | null>(null);
@@ -85,11 +86,37 @@ const SpeciePage = () => {
                   </Card.Text>
                   <Card.Title>Links</Card.Title>
                   <Card.Text>
+                    <b>Films</b>
+                  </Card.Text>
+                  <ListGroup className="mb-3 d-flex flex-row flex-wrap">
+                    {specie.films.map((film) => (
+                      <ListGroup.Item
+                        key={film.id}
+                        className="col-12 col-lg-4 custom-list-item click"
+                        onClick={() => {
+                          navigate(`/films/${film.id}`);
+                        }}
+                      >
+                        <p>{film.title}</p>
+                      </ListGroup.Item>
+                    ))}
+                  </ListGroup>
+                  <Card.Text>
                     <b>People</b>
                   </Card.Text>
-                  <Card.Text>
-                    <b>Residents</b>
-                  </Card.Text>
+                  <ListGroup className="mb-3 d-flex flex-row flex-wrap">
+                    {specie.people.map((person) => (
+                      <ListGroup.Item
+                        key={person.id}
+                        className="col-12 col-lg-4 custom-list-item click"
+                        onClick={() => {
+                          navigate(`/people/${person.id}`);
+                        }}
+                      >
+                        <p>{person.name}</p>
+                      </ListGroup.Item>
+                    ))}
+                  </ListGroup>
                 </Card.Body>
               </Card>
             </Col>
