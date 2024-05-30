@@ -1,7 +1,6 @@
 import Container from "react-bootstrap/Container";
 import Navigation from "./components/Navigation";
 import { Routes, Route } from "react-router-dom";
-import "./assets/scss/App.scss";
 import HomePage from "./pages/HomePage";
 import FilmsPage from "./pages/FilmsPage";
 import FilmPage from "./pages/FilmPage";
@@ -16,6 +15,7 @@ import StarshipPage from "./pages/StarshipPage";
 import VehiclesPage from "./pages/VehiclesPage";
 import VehiclePage from "./pages/VehiclePage";
 import NotFoundPage from "./pages/NotFoundPage";
+import "./assets/scss/App.scss";
 
 const App = () => {
   return (
