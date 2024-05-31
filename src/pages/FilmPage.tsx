@@ -6,7 +6,8 @@ import Alert from "react-bootstrap/Alert";
 import Row from "react-bootstrap/Row";
 import Col from "react-bootstrap/Col";
 import Card from "react-bootstrap/Card";
-import { ListGroup } from "react-bootstrap";
+import ListGroup from "react-bootstrap/ListGroup";
+import NavigateButton from "../components/NavigateButton";
 
 const FilmPage = () => {
   const [film, setFilm] = useState<SW_Film | null>(null);
@@ -161,6 +162,7 @@ const FilmPage = () => {
               </Card>
             </Col>
           </Row>
+          <NavigateButton />
         </div>
       )}
     </>

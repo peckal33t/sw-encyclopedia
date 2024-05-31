@@ -6,7 +6,8 @@ import Alert from "react-bootstrap/Alert";
 import Row from "react-bootstrap/Row";
 import Col from "react-bootstrap/Col";
 import Card from "react-bootstrap/Card";
-import { ListGroup } from "react-bootstrap";
+import ListGroup from "react-bootstrap/ListGroup";
+import NavigateButton from "../components/NavigateButton";
 
 const PersonPage = () => {
   const [person, setPerson] = useState<SW_Person | null>(null);
@@ -147,6 +148,7 @@ const PersonPage = () => {
               </Card>
             </Col>
           </Row>
+          <NavigateButton />
         </div>
       )}
     </>

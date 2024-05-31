@@ -12,7 +12,7 @@ const NavigateButton = () => {
       className="custom-button-text"
       variant="dark"
     >
-      &lArr; Back
+      &laquo; Back
     </Button>
   );
 };

@@ -6,7 +6,8 @@ import Alert from "react-bootstrap/Alert";
 import Row from "react-bootstrap/Row";
 import Col from "react-bootstrap/Col";
 import Card from "react-bootstrap/Card";
-import { ListGroup } from "react-bootstrap";
+import ListGroup from "react-bootstrap/ListGroup";
+import NavigateButton from "../components/NavigateButton";
 
 const PlanetPage = () => {
   const [planet, setPlanet] = useState<SW_Planet | null>(null);
@@ -121,6 +122,7 @@ const PlanetPage = () => {
               </Card>
             </Col>
           </Row>
+          <NavigateButton />
         </div>
       )}
     </>
