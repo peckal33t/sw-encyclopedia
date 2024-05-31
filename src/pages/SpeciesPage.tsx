@@ -139,10 +139,11 @@ const SpeciesPage = () => {
                   <Card.Text>Appears in: {specie.films_count} films</Card.Text>
                   <div className="d-flex justify-content-start">
                     <Button
+                      className="custom-button-text"
                       onClick={() => {
                         navigate(`/species/${specie.id}`);
                       }}
-                      variant="primary"
+                      variant="dark"
                     >
                       Read more
                     </Button>

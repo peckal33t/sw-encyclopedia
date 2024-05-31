@@ -147,10 +147,11 @@ const StarshipsPage = () => {
                   </Card.Text>
                   <div className="d-flex justify-content-start">
                     <Button
+                      className="custom-button-text"
                       onClick={() => {
                         navigate(`/starships/${starship.id}`);
                       }}
-                      variant="primary"
+                      variant="dark"
                     >
                       Read more
                     </Button>

@@ -141,10 +141,11 @@ const PeoplePage = () => {
                   <Card.Text>Playing in: {person.films_count} films</Card.Text>
                   <div className="d-flex justify-content-start">
                     <Button
+                      className="custom-button-text"
                       onClick={() => {
                         navigate(`/people/${person.id}`);
                       }}
-                      variant="primary"
+                      variant="dark"
                     >
                       Read more
                     </Button>
