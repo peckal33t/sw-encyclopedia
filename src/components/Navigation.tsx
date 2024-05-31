@@ -8,7 +8,10 @@ const Navigation = () => {
     <Navbar bg="dark" variant="dark" expand="md" className="orbitron">
       <Container>
         <Navbar.Brand as={Link} to="/">
-          Star Wars Encyclopedia
+          <span style={{ color: "#ffff00", textShadow: "7px 7px 2px black" }}>
+            Star Wars
+          </span>{" "}
+          Encyclopedia
         </Navbar.Brand>
 
         <Navbar.Toggle aria-controls="basic-navbar-nav" />

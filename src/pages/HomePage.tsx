@@ -3,7 +3,7 @@ const HomePage = () => {
     <div className="py-3">
       <h1 className="h2 orbitron">
         Welcome to the{" "}
-        <span style={{ color: "#ffff00", textShadow: "5px 5px 2px black" }}>
+        <span style={{ color: "#ffff00", textShadow: "7px 7px 2px black" }}>
           Star Wars
         </span>{" "}
         Encyclopedia
