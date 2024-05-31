@@ -9,23 +9,29 @@ const instance = axios.create({
   },
 });
 
+const FAKE_DELAY = 1000;
+
 export const getData = async <T>(endpoint: string) => {
   const res = await instance.get<T>(endpoint);
+  await new Promise((r) => setTimeout(r, FAKE_DELAY));
   return res.data;
 };
 
 export const getResources = async <T>(resource: string, page: number) => {
+  await new Promise((r) => setTimeout(r, FAKE_DELAY));
   return getData<T>(`/${resource}?page=${page}`);
 };
 
 export const getResourceById = async <T>(resource: string, id: number) => {
+  await new Promise((r) => setTimeout(r, FAKE_DELAY));
   return getData<T>(`/${resource}/${id}`);
 };
 
-export const searchResource = <T>(
+export const searchResource = async <T>(
   resource: string,
   query: string,
   page: number
 ) => {
+  await new Promise((r) => setTimeout(r, FAKE_DELAY));
   return getData<T>(`/${resource}/?search=${query}&page=${page}`);
 };

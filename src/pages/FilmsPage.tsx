@@ -9,6 +9,7 @@ import Card from "react-bootstrap/Card";
 import Button from "react-bootstrap/Button";
 import Pagination from "../components/Pagination";
 import SearchForm from "../components/SearchForm";
+import Loading from "../components/Loading";
 
 const FilmsPage = () => {
   const [films, setFilms] = useState<SW_FilmsResponse | null>(null);
@@ -116,7 +117,7 @@ const FilmsPage = () => {
 
   return (
     <>
-      {isLoading && <p>Loading...</p>}
+      {isLoading && <Loading />}
       {error && <Alert variant="warning">{error}</Alert>}
       <SearchForm
         searchInput={searchInput}
