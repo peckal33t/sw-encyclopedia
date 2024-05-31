@@ -119,13 +119,15 @@ const FilmsPage = () => {
     <>
       {isLoading && <Loading />}
       {error && <Alert variant="warning">{error}</Alert>}
-      <SearchForm
-        searchInput={searchInput}
-        setSearchInput={setSearchInput}
-        handleSubmit={handleSubmit}
-        inputRef={inputSearchRef}
-        label="Search for a film"
-      />
+      {!isLoading && !error && (
+        <SearchForm
+          searchInput={searchInput}
+          setSearchInput={setSearchInput}
+          handleSubmit={handleSubmit}
+          inputRef={inputSearchRef}
+          label="Search for a film"
+        />
+      )}
       {!isLoading && !error && films && (
         <>
           {films.data.length > 0 && searchParamsQuery ? (
