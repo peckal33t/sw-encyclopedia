@@ -143,10 +143,11 @@ const FilmsPage = () => {
                   <Card.Text>Release date: {film.release_date}</Card.Text>
                   <div className="d-flex justify-content-start">
                     <Button
+                      className="custom-button-text"
                       onClick={() => {
                         navigate(`/films/${film.id}`);
                       }}
-                      variant="primary"
+                      variant="dark"
                     >
                       Read more
                     </Button>
