@@ -5,7 +5,7 @@ import { Link, NavLink } from "react-router-dom";
 
 const Navigation = () => {
   return (
-    <Navbar bg="dark" variant="dark" expand="md">
+    <Navbar bg="dark" variant="dark" expand="md" className="orbitron">
       <Container>
         <Navbar.Brand as={Link} to="/">
           Star Wars Encyclopedia

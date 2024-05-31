@@ -1,8 +1,14 @@
 const HomePage = () => {
   return (
-    <>
-      <h1 className="h2">Welcome to the Star Wars Encyclopedia</h1>
-      <p>
+    <div className="py-3">
+      <h1 className="h2 orbitron">
+        Welcome to the{" "}
+        <span style={{ color: "#ffff00", textShadow: "5px 5px 2px black" }}>
+          Star Wars
+        </span>{" "}
+        Encyclopedia
+      </h1>
+      <p className="roboto-mono">
         Whether you're a lifelong fan of the galaxy far, far away or a newcomer
         eager to explore its rich lore, you've come to the right place. This
         comprehensive guide is your portal to the vast universe of Star Wars,
@@ -13,7 +19,7 @@ const HomePage = () => {
         ancient history of the Old Republic to the rise of the First Order, and
         even the adventures of the Mandalorians, we cover it all.
       </p>
-      <p>
+      <p className="roboto-mono">
         Discover the legendary heroes like Luke Skywalker, Princess Leia, and
         Rey, and the iconic villains such as Darth Vader, Emperor Palpatine, and
         Kylo Ren. Learn about the intricate politics of the Galactic Senate, the
@@ -21,8 +27,8 @@ const HomePage = () => {
         Explore the diverse worlds of Tatooine, Coruscant, and Dagobah, and
         uncover the mysteries of the Force that binds the galaxy together.
       </p>
-      <p>May the Force be with you!</p>
-    </>
+      <p className="roboto-mono">May the Force be with you!</p>
+    </div>
   );
 };
 

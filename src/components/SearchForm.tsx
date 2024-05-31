@@ -19,7 +19,7 @@ const SearchForm: React.FC<SearchFormProps> = ({
   label,
 }) => {
   return (
-    <div>
+    <div className="py-3">
       <Form className="mb-4" onSubmit={handleSubmit}>
         <Form.Group className="mb-3" controlId="searchQuery">
           <Form.Label>{label}</Form.Label>
