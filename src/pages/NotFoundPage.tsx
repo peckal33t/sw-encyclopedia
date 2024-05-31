@@ -19,7 +19,9 @@ const NotFoundPage = () => {
         />
 
         <Link to="/">
-          <Button variant="primary">Return to Home</Button>
+          <Button className="custom-button-text" variant="dark">
+            Return to Home
+          </Button>
         </Link>
       </div>
     </Container>
