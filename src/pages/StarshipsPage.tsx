@@ -131,7 +131,7 @@ const StarshipsPage = () => {
               {starships.total} search result for "{searchParamsQuery}"
             </p>
           ) : (
-            <p>{starships.total} results showing for Starships</p>
+            <p>Showing all {starships.total} Starships</p>
           )}
           <Row>
             {starships.data.map((starship) => (

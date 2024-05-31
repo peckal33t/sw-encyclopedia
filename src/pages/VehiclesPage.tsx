@@ -131,7 +131,7 @@ const VehiclesPage = () => {
               {vehicles.total} search result for "{searchParamsQuery}"
             </p>
           ) : (
-            <p>{vehicles.total} results showing for Vehicles</p>
+            <p>Showing all {vehicles.total} Vehicles</p>
           )}
           <Row>
             {vehicles.data.map((vehicle) => (

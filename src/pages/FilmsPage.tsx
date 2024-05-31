@@ -132,7 +132,7 @@ const FilmsPage = () => {
               {films.total} search result for "{searchParamsQuery}"
             </p>
           ) : (
-            <p>{films.total} results showing for Films</p>
+            <p>Showing all {films.total} Films</p>
           )}
           <Row>
             {films.data.map((film) => (

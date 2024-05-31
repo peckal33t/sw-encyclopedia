@@ -130,7 +130,7 @@ const PeoplePage = () => {
               {people.total} search result for "{searchParamsQuery}"
             </p>
           ) : (
-            <p>{people.total} results showing for People</p>
+            <p>Showing all {people.total} People</p>
           )}
           <Row>
             {people.data.map((person) => (

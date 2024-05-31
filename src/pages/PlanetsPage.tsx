@@ -128,7 +128,7 @@ const PlanetsPage = () => {
               {planets.total} search result for "{searchParamsQuery}"
             </p>
           ) : (
-            <p>{planets.total} results showing for Planets</p>
+            <p>Showing all {planets.total} Planets</p>
           )}
           <Row>
             {planets.data.map((planet) => (

@@ -128,7 +128,7 @@ const SpeciesPage = () => {
               {species.total} search result for "{searchParamsQuery}"
             </p>
           ) : (
-            <p>{species.total} results showing for Species</p>
+            <p>Showing all {species.total} Species</p>
           )}
           <Row>
             {species.data.map((specie) => (
