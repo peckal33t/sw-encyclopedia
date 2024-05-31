@@ -138,8 +138,12 @@ const VehiclesPage = () => {
               <Col key={vehicle.id} xs={12} md={6} lg={4} className="mb-3">
                 <Card className="p-3">
                   <Card.Title>{vehicle.name}</Card.Title>
-                  <Card.Text>Model: {vehicle.model}</Card.Text>
-                  <Card.Text>Appears in: {vehicle.films_count} films</Card.Text>
+                  <Card.Text>
+                    <strong>Model</strong>: {vehicle.model}
+                  </Card.Text>
+                  <Card.Text>
+                    <strong>Appears in</strong>: {vehicle.films_count} films
+                  </Card.Text>
                   <div className="d-flex justify-content-start">
                     <Button
                       className="custom-button-text"

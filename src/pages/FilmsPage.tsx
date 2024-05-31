@@ -139,8 +139,12 @@ const FilmsPage = () => {
               <Col key={film.id} xs={12} md={6} lg={4} className="mb-3">
                 <Card className="p-3">
                   <Card.Title>{film.title}</Card.Title>
-                  <Card.Text>Director: {film.director}</Card.Text>
-                  <Card.Text>Release date: {film.release_date}</Card.Text>
+                  <Card.Text>
+                    <strong>Director</strong>: {film.director}
+                  </Card.Text>
+                  <Card.Text>
+                    <strong>Release date</strong>: {film.release_date}
+                  </Card.Text>
                   <div className="d-flex justify-content-start">
                     <Button
                       className="custom-button-text"

@@ -136,9 +136,11 @@ const PlanetsPage = () => {
                 <Card className="p-3">
                   <Card.Title>{planet.name}</Card.Title>
                   <Card.Text>
-                    Population: {planet.population} residents
+                    <strong>Population</strong>: {planet.population} residents
                   </Card.Text>
-                  <Card.Text>Appears in: {planet.films_count} films</Card.Text>
+                  <Card.Text>
+                    <strong>Appears in</strong>: {planet.films_count} films
+                  </Card.Text>
                   <div className="d-flex justify-content-start">
                     <Button
                       className="custom-button-text"

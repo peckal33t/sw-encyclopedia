@@ -137,8 +137,12 @@ const PeoplePage = () => {
               <Col key={person.id} xs={12} md={6} lg={4} className="mb-3">
                 <Card className="p-3">
                   <Card.Title>{person.name}</Card.Title>
-                  <Card.Text>Birth year: {person.birth_year}</Card.Text>
-                  <Card.Text>Playing in: {person.films_count} films</Card.Text>
+                  <Card.Text>
+                    <strong>Birth year</strong>: {person.birth_year}
+                  </Card.Text>
+                  <Card.Text>
+                    <strong>Playing in</strong>: {person.films_count} films
+                  </Card.Text>
                   <div className="d-flex justify-content-start">
                     <Button
                       className="custom-button-text"

@@ -135,8 +135,12 @@ const SpeciesPage = () => {
               <Col key={specie.id} xs={12} md={6} lg={4} className="mb-3">
                 <Card className="p-3">
                   <Card.Title>{specie.name}</Card.Title>
-                  <Card.Text>Speaking language: {specie.language}</Card.Text>
-                  <Card.Text>Appears in: {specie.films_count} films</Card.Text>
+                  <Card.Text>
+                    <strong>Speaking language</strong>: {specie.language}
+                  </Card.Text>
+                  <Card.Text>
+                    <strong>Appears in</strong>: {specie.films_count} films
+                  </Card.Text>
                   <div className="d-flex justify-content-start">
                     <Button
                       className="custom-button-text"
