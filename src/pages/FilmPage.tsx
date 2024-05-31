@@ -90,7 +90,7 @@ const FilmPage = () => {
                           navigate(`/people/${character.id}`);
                         }}
                       >
-                        <p>{character.name}</p>
+                        <p>&gt; {character.name}</p>
                       </ListGroup.Item>
                     ))}
                   </ListGroup>
@@ -106,7 +106,7 @@ const FilmPage = () => {
                           navigate(`/planets/${planet.id}`);
                         }}
                       >
-                        <p>{planet.name}</p>
+                        <p>&gt; {planet.name}</p>
                       </ListGroup.Item>
                     ))}
                   </ListGroup>
@@ -122,7 +122,7 @@ const FilmPage = () => {
                           navigate(`/species/${specie.id}`);
                         }}
                       >
-                        <p>{specie.name}</p>
+                        <p>&gt; {specie.name}</p>
                       </ListGroup.Item>
                     ))}
                   </ListGroup>
@@ -138,7 +138,7 @@ const FilmPage = () => {
                           navigate(`/starships/${starship.id}`);
                         }}
                       >
-                        <p>{starship.name}</p>
+                        <p>&gt; {starship.name}</p>
                       </ListGroup.Item>
                     ))}
                   </ListGroup>
@@ -154,7 +154,7 @@ const FilmPage = () => {
                           navigate(`/vehicles/${vehicle.id}`);
                         }}
                       >
-                        <p>{vehicle.name}</p>
+                        <p>&gt; {vehicle.name}</p>
                       </ListGroup.Item>
                     ))}
                   </ListGroup>

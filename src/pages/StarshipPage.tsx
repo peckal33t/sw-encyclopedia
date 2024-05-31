@@ -111,7 +111,7 @@ const StarshipPage = () => {
                           navigate(`/people/${pilot.id}`);
                         }}
                       >
-                        <p>{pilot.name}</p>
+                        <p>&gt; {pilot.name}</p>
                       </ListGroup.Item>
                     ))}
                   </ListGroup>
@@ -127,7 +127,7 @@ const StarshipPage = () => {
                           navigate(`/films/${film.id}`);
                         }}
                       >
-                        <p>{film.title}</p>
+                        <p>&gt; {film.title}</p>
                       </ListGroup.Item>
                     ))}
                   </ListGroup>

@@ -105,7 +105,7 @@ const VehiclePage = () => {
                           navigate(`/people/${pilot.id}`);
                         }}
                       >
-                        <p>{pilot.name}</p>
+                        <p>&gt; {pilot.name}</p>
                       </ListGroup.Item>
                     ))}
                   </ListGroup>
@@ -121,7 +121,7 @@ const VehiclePage = () => {
                           navigate(`/films/${film.id}`);
                         }}
                       >
-                        <p>{film.title}</p>
+                        <p>&gt; {film.title}</p>
                       </ListGroup.Item>
                     ))}
                   </ListGroup>

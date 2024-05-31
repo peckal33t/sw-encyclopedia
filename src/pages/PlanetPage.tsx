@@ -98,7 +98,7 @@ const PlanetPage = () => {
                           navigate(`/films/${film.id}`);
                         }}
                       >
-                        <p>{film.title}</p>
+                        <p>&gt; {film.title}</p>
                       </ListGroup.Item>
                     ))}
                   </ListGroup>
@@ -114,7 +114,7 @@ const PlanetPage = () => {
                           navigate(`/films/${resident.id}`);
                         }}
                       >
-                        <p>{resident.name}</p>
+                        <p>&gt; {resident.name}</p>
                       </ListGroup.Item>
                     ))}
                   </ListGroup>

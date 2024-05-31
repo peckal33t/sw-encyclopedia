@@ -92,7 +92,7 @@ const PersonPage = () => {
                           navigate(`/films/${film.id}`);
                         }}
                       >
-                        <p>{film.title}</p>
+                        <p>&gt; {film.title}</p>
                       </ListGroup.Item>
                     ))}
                   </ListGroup>
@@ -108,7 +108,7 @@ const PersonPage = () => {
                           navigate(`/species/${specie.id}`);
                         }}
                       >
-                        <p>{specie.name}</p>
+                        <p>&gt; {specie.name}</p>
                       </ListGroup.Item>
                     ))}
                   </ListGroup>
@@ -124,7 +124,7 @@ const PersonPage = () => {
                           navigate(`/starships/${starship.id}`);
                         }}
                       >
-                        <p>{starship.name}</p>
+                        <p>&gt; {starship.name}</p>
                       </ListGroup.Item>
                     ))}
                   </ListGroup>
@@ -140,7 +140,7 @@ const PersonPage = () => {
                           navigate(`/vehicles/${vehicle.id}`);
                         }}
                       >
-                        <p>{vehicle.name}</p>
+                        <p>&gt; {vehicle.name}</p>
                       </ListGroup.Item>
                     ))}
                   </ListGroup>

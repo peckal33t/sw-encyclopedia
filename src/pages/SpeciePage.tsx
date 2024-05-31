@@ -98,7 +98,7 @@ const SpeciePage = () => {
                           navigate(`/films/${film.id}`);
                         }}
                       >
-                        <p>{film.title}</p>
+                        <p>&gt; {film.title}</p>
                       </ListGroup.Item>
                     ))}
                   </ListGroup>
@@ -114,7 +114,7 @@ const SpeciePage = () => {
                           navigate(`/people/${person.id}`);
                         }}
                       >
-                        <p>{person.name}</p>
+                        <p>&gt; {person.name}</p>
                       </ListGroup.Item>
                     ))}
                   </ListGroup>
