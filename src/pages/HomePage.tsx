@@ -27,7 +27,13 @@ const HomePage = () => {
         Explore the diverse worlds of Tatooine, Coruscant, and Dagobah, and
         uncover the mysteries of the Force that binds the galaxy together.
       </p>
-      <p className="roboto-mono">May the Force be with you!</p>
+      <p className="orbitron h5">
+        May the{" "}
+        <span style={{ color: "#ffff00", textShadow: "7px 7px 2px black" }}>
+          FORCE
+        </span>{" "}
+        be with you!
+      </p>
     </div>
   );
 };
