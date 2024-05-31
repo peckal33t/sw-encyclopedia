@@ -60,7 +60,7 @@ const PersonPage = () => {
                       <b>{person.name}</b>
                     </h2>
                   </Card.Title>
-                  <Card.Title>Attributes</Card.Title>
+                  <Card.Text className="h5">Attributes</Card.Text>
                   <Card.Text>
                     <b>Birth year</b>: {person.birth_year}
                   </Card.Text>
@@ -79,7 +79,7 @@ const PersonPage = () => {
                   <Card.Text>
                     <b>Skin color</b>: {person.skin_color}
                   </Card.Text>
-                  <Card.Title>Links</Card.Title>
+                  <Card.Text className="h5">Links</Card.Text>
                   <Card.Text>
                     <b>Films</b>
                   </Card.Text>

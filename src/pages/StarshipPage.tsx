@@ -60,7 +60,7 @@ const StarshipPage = () => {
                       <b>{starship.name}</b>
                     </h2>
                   </Card.Title>
-                  <Card.Title>Attributes</Card.Title>
+                  <Card.Text className="h5">Attributes</Card.Text>
                   <Card.Text>
                     <b>Model</b>: {starship.model}
                   </Card.Text>
@@ -98,7 +98,7 @@ const StarshipPage = () => {
                   <Card.Text>
                     <b>Consumables</b>: {starship.consumables}
                   </Card.Text>
-                  <Card.Title>Links</Card.Title>
+                  <Card.Text className="h5">Links</Card.Text>
                   <Card.Text>
                     <b>Pilots</b>
                   </Card.Text>

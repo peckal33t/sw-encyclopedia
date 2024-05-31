@@ -60,7 +60,7 @@ const PlanetPage = () => {
                       <b>{planet.name}</b>
                     </h2>
                   </Card.Title>
-                  <Card.Title>Attributes</Card.Title>
+                  <Card.Text className="h5">Attributes</Card.Text>
                   <Card.Text>
                     <b>Rotation period</b>: {planet.rotation_period}
                   </Card.Text>
@@ -85,7 +85,7 @@ const PlanetPage = () => {
                   <Card.Text>
                     <b>Population</b>: {planet.population}
                   </Card.Text>
-                  <Card.Title>Links</Card.Title>
+                  <Card.Text className="h5">Links</Card.Text>
                   <Card.Text>
                     <b>Films</b>
                   </Card.Text>

@@ -60,11 +60,11 @@ const FilmPage = () => {
                       <b>{film.title}</b>
                     </h2>
                   </Card.Title>
-                  <Card.Title>Description</Card.Title>
+                  <Card.Text className="h5">Description</Card.Text>
                   <Card.Text>
                     <b>Opening crawl</b>: {film.opening_crawl}
                   </Card.Text>
-                  <Card.Title>Attributes</Card.Title>
+                  <Card.Text className="h5">Attributes</Card.Text>
                   <Card.Text>
                     <b>Episode</b>: {film.episode_id}
                   </Card.Text>
@@ -77,7 +77,7 @@ const FilmPage = () => {
                   <Card.Text>
                     <b>Release date</b>: {film.release_date}
                   </Card.Text>
-                  <Card.Title>Links</Card.Title>
+                  <Card.Text className="h5">Links</Card.Text>
                   <Card.Text>
                     <b>Characters</b>
                   </Card.Text>

@@ -60,7 +60,7 @@ const SpeciePage = () => {
                       <b>{specie.name}</b>
                     </h2>
                   </Card.Title>
-                  <Card.Title>Attributes</Card.Title>
+                  <Card.Text className="h5">Attributes</Card.Text>
                   <Card.Text>
                     <b>Classification</b>: {specie.classification}
                   </Card.Text>
@@ -85,7 +85,7 @@ const SpeciePage = () => {
                   <Card.Text>
                     <b>Language</b>: {specie.language}
                   </Card.Text>
-                  <Card.Title>Links</Card.Title>
+                  <Card.Text className="h5">Links</Card.Text>
                   <Card.Text>
                     <b>Films</b>
                   </Card.Text>

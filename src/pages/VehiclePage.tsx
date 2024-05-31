@@ -60,7 +60,7 @@ const VehiclePage = () => {
                       <b>{vehicle.name}</b>
                     </h2>
                   </Card.Title>
-                  <Card.Title>Attributes</Card.Title>
+                  <Card.Text className="h5">Attributes</Card.Text>
                   <Card.Text>
                     <b>Model</b>: {vehicle.model}
                   </Card.Text>
@@ -92,7 +92,7 @@ const VehiclePage = () => {
                   <Card.Text>
                     <b>Consumables</b>: {vehicle.consumables}
                   </Card.Text>
-                  <Card.Title>Links</Card.Title>
+                  <Card.Text className="h5">Links</Card.Text>
                   <Card.Text>
                     <b>Pilots</b>
                   </Card.Text>
