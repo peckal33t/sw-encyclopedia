@@ -136,6 +136,10 @@ const FilmsPage = () => {
             <p>
               {films.total} search result for "{searchParamsQuery}"
             </p>
+          ) : films.data.length === 0 && searchParamsQuery ? (
+            <p>
+              {films.total} search result for "{searchParamsQuery}"
+            </p>
           ) : (
             <p>Showing all {films.total} Films</p>
           )}
