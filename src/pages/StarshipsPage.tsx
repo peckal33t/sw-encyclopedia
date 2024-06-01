@@ -101,8 +101,10 @@ const StarshipsPage = () => {
   };
 
   useEffect(() => {
-    inputSearchRef.current?.focus();
-  }, []);
+    if (!isLoading && inputSearchRef.current) {
+      inputSearchRef.current?.focus();
+    }
+  }, [isLoading]);
 
   useEffect(() => {
     const page = searchParamsPage ? parseInt(searchParamsPage) : 1;
