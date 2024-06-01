@@ -8,6 +8,7 @@ import Col from "react-bootstrap/Col";
 import Card from "react-bootstrap/Card";
 import ListGroup from "react-bootstrap/ListGroup";
 import NavigateButton from "../components/NavigateButton";
+import Loading from "../components/Loading";
 
 const PersonPage = () => {
   const [person, setPerson] = useState<SW_Person | null>(null);
@@ -48,7 +49,7 @@ const PersonPage = () => {
   return (
     <>
       {error && <Alert variant="warning">{error}</Alert>}
-      {isLoading && <p>Loading...</p>}
+      {isLoading && <Loading />}
       {!isLoading && person && (
         <div>
           <Row>
