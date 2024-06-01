@@ -114,7 +114,7 @@ const VehiclesPage = () => {
     } else {
       getVehicles(page);
     }
-  }, []);
+  }, [searchParamsQuery, searchParamsPage]);
 
   return (
     <>

@@ -111,7 +111,7 @@ const SpeciesPage = () => {
     } else {
       getSpecies(page);
     }
-  }, []);
+  }, [searchParamsQuery, searchParamsPage]);
 
   return (
     <>

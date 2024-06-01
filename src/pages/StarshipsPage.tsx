@@ -114,7 +114,7 @@ const StarshipsPage = () => {
     } else {
       getStarships(page);
     }
-  }, []);
+  }, [searchParamsQuery, searchParamsPage]);
 
   return (
     <>
