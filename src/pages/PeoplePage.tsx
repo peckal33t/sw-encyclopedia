@@ -9,6 +9,7 @@ import Card from "react-bootstrap/Card";
 import Button from "react-bootstrap/Button";
 import Pagination from "../components/Pagination";
 import SearchForm from "../components/SearchForm";
+import Loading from "../components/Loading";
 
 const PeoplePage = () => {
   const [people, setPeople] = useState<SW_PeopleResponse | null>(null);
@@ -114,15 +115,17 @@ const PeoplePage = () => {
 
   return (
     <>
-      {isLoading && <p>Loading...</p>}
+      {isLoading && <Loading />}
       {error && <Alert variant="warning">{error}</Alert>}
-      <SearchForm
-        searchInput={searchInput}
-        setSearchInput={setSearchInput}
-        handleSubmit={handleSubmit}
-        inputRef={inputSearchRef}
-        label="Search for a person"
-      />
+      {!isLoading && !error && (
+        <SearchForm
+          searchInput={searchInput}
+          setSearchInput={setSearchInput}
+          handleSubmit={handleSubmit}
+          inputRef={inputSearchRef}
+          label="Search for a person"
+        />
+      )}
       {!isLoading && !error && people && (
         <>
           {people.data.length > 0 && searchParamsQuery ? (

@@ -9,6 +9,7 @@ import Card from "react-bootstrap/Card";
 import Button from "react-bootstrap/Button";
 import Pagination from "../components/Pagination";
 import SearchForm from "../components/SearchForm";
+import Loading from "../components/Loading";
 
 const PlanetsPage = () => {
   const [planets, setPlanets] = useState<SW_PlanetsResponse | null>(null);
@@ -112,15 +113,17 @@ const PlanetsPage = () => {
 
   return (
     <>
-      {isLoading && <p>Loading...</p>}
+      {isLoading && <Loading />}
       {error && <Alert variant="warning">{error}</Alert>}
-      <SearchForm
-        searchInput={searchInput}
-        setSearchInput={setSearchInput}
-        handleSubmit={handleSubmit}
-        inputRef={inputSearchRef}
-        label="Search for a planet"
-      />
+      {!isLoading && !error && (
+        <SearchForm
+          searchInput={searchInput}
+          setSearchInput={setSearchInput}
+          handleSubmit={handleSubmit}
+          inputRef={inputSearchRef}
+          label="Search for a planet"
+        />
+      )}
       {!isLoading && !error && planets && (
         <>
           {planets.data.length > 0 && searchParamsQuery ? (

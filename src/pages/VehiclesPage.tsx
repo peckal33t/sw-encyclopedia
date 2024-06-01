@@ -9,6 +9,7 @@ import Card from "react-bootstrap/Card";
 import Button from "react-bootstrap/Button";
 import Pagination from "../components/Pagination";
 import SearchForm from "../components/SearchForm";
+import Loading from "../components/Loading";
 
 const VehiclesPage = () => {
   const [vehicles, setVehicles] = useState<SW_VehiclesResponse | null>(null);
@@ -100,8 +101,10 @@ const VehiclesPage = () => {
   };
 
   useEffect(() => {
-    inputSearchRef.current?.focus();
-  }, []);
+    if (!isLoading && inputSearchRef.current) {
+      inputSearchRef.current?.focus();
+    }
+  }, [isLoading]);
 
   useEffect(() => {
     const page = searchParamsPage ? parseInt(searchParamsPage) : 1;
@@ -115,15 +118,17 @@ const VehiclesPage = () => {
 
   return (
     <>
-      {isLoading && <p>Loading...</p>}
+      {isLoading && <Loading />}
       {error && <Alert variant="warning">{error}</Alert>}
-      <SearchForm
-        searchInput={searchInput}
-        setSearchInput={setSearchInput}
-        handleSubmit={handleSubmit}
-        inputRef={inputSearchRef}
-        label="Search for a vehicle"
-      />
+      {!isLoading && !error && (
+        <SearchForm
+          searchInput={searchInput}
+          setSearchInput={setSearchInput}
+          handleSubmit={handleSubmit}
+          inputRef={inputSearchRef}
+          label="Search for a vehicle"
+        />
+      )}
       {!isLoading && !error && vehicles && (
         <>
           {vehicles.data.length > 0 && searchParamsQuery ? (
