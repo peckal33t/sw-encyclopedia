@@ -135,6 +135,10 @@ const VehiclesPage = () => {
             <p>
               {vehicles.total} search result for "{searchParamsQuery}"
             </p>
+          ) : vehicles.data.length === 0 && searchParamsQuery ? (
+            <p>
+              {vehicles.total} search result for "{searchParamsQuery}"
+            </p>
           ) : (
             <p>Showing all {vehicles.total} Vehicles</p>
           )}

@@ -49,7 +49,7 @@ const StarshipsPage = () => {
 
   const searchStarships = async (searchQuery: string, page = 1) => {
     setStarships(null);
-    setIsLoading(false);
+    setIsLoading(true);
     setError(null);
 
     try {
@@ -132,6 +132,10 @@ const StarshipsPage = () => {
       {!isLoading && !error && starships && (
         <>
           {starships.data.length > 0 && searchParamsQuery ? (
+            <p>
+              {starships.total} search result for "{searchParamsQuery}"
+            </p>
+          ) : starships.data.length === 0 && searchParamsQuery ? (
             <p>
               {starships.total} search result for "{searchParamsQuery}"
             </p>

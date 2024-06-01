@@ -132,6 +132,10 @@ const SpeciesPage = () => {
             <p>
               {species.total} search result for "{searchParamsQuery}"
             </p>
+          ) : species.data.length === 0 && searchParamsQuery ? (
+            <p>
+              {species.total} search result for "{searchParamsQuery}"
+            </p>
           ) : (
             <p>Showing all {species.total} Species</p>
           )}

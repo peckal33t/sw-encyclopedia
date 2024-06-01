@@ -134,6 +134,10 @@ const PeoplePage = () => {
             <p>
               {people.total} search result for "{searchParamsQuery}"
             </p>
+          ) : people.data.length === 0 && searchParamsQuery ? (
+            <p>
+              {people.total} search result for "{searchParamsQuery}"
+            </p>
           ) : (
             <p>Showing all {people.total} People</p>
           )}

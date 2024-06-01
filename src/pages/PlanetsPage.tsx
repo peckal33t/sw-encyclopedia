@@ -132,6 +132,10 @@ const PlanetsPage = () => {
             <p>
               {planets.total} search result for "{searchParamsQuery}"
             </p>
+          ) : planets.data.length === 0 && searchParamsQuery ? (
+            <p>
+              {planets.total} search result for "{searchParamsQuery}"
+            </p>
           ) : (
             <p>Showing all {planets.total} Planets</p>
           )}
