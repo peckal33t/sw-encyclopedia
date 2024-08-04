@@ -5,7 +5,3 @@ A project where I crafted a encyclopedia based on the famous Star Wars so you ca
 ## Technology Stack
 
 **React**, **React Router**, **Axios**
-
-##
-
-**May the Force be with you!**
