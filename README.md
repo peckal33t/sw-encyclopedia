@@ -1,5 +1,5 @@
-# Website Draft URL
+# Star Wars Encyclopedia
 
-## Latest link
+A project where I crafted a encyclopedia based on the famous Star Wars so you can easily find information about everything in the Star Wars-universe.
 
-<https://665ba401c9ce7ab48efe7b17--petar-star-wars-encyclopedia.netlify.app>
+May the force be with you!
